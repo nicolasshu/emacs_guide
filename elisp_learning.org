@@ -1,6 +1,6 @@
 * Prerequisites
 ** Notes
-For this guide, for the purposes of rendering the 
+For this guide, for the purposes of rendering the code block parameters, when showing examples of code blocks, instead of using =#+BEGIN_SRC=, we will use =\#+BEGIN_SRC=
 ** Executing Blocks
 In order to run the code blocks below in your system, you can use =C-c C-c= (=org-ctrl-c-ctrl-c=) or =, ,= (Spacemacs). This will create a =RESULTS= block underneath it showing the result. For example:
 
@@ -22,9 +22,9 @@ You may use =org-babel-tangle= (=C-c C-v t= or =, b t= in Spacemacs) in order to
 Assume you are working on a file names =filename.org=. In order to export all of the same type blocks into a single file =filename.ext=, you may add the arguments =:tangle yes= to each of the code blocks you wish to output. For example:
 
 #+begin_src
-+begin_src elisp :tangle yes
+\#+begin_src elisp :tangle yes
 (setq x 10)
-+end_src
+\#+end_src
 #+end_src
 
 Note that if you have multiple types of codeblocks, for example a Javascript, a Python, a Elisp, and run =org-babel-tangle=, it will output files for each of those extensions:
@@ -36,15 +36,15 @@ Note that if you have multiple types of codeblocks, for example a Javascript, a 
 In order to set individual code blocks to be tangled into specific files, add the argument =:tangle filename.ext= to the code block definition. For example:
 
 #+begin_src 
-#+begin_src python :tangle my_python.py
+\#+begin_src python :tangle my_python.py
 x = 10
-#+end_src
+\#+end_src
 #+end_src
 
 #+begin_src 
-#+begin_src python :tangle my_elisp.el
+\#+begin_src python :tangle my_elisp.el
 (setq x 10)
-#+end_src
+\#+end_src
 #+end_src
 * Basic
 To set up variables, we can use =setq=.
