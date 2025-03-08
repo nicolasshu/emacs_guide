@@ -1,12 +1,14 @@
 * Prerequisites
+** Notes
+For this guide, for the purposes of rendering the 
 ** Executing Blocks
 In order to run the code blocks below in your system, you can use =C-c C-c= (=org-ctrl-c-ctrl-c=) or =, ,= (Spacemacs). This will create a =RESULTS= block underneath it showing the result. For example:
 
 #+begin_src 
 ;; Look at this
-#+begin_src elisp :tangle yes
+\#+begin_src elisp :tangle yes
 (setq x 10)
-#+end_src
+\#+end_src
 #+end_src
 
 #+BEGIN_SRC
@@ -20,9 +22,9 @@ You may use =org-babel-tangle= (=C-c C-v t= or =, b t= in Spacemacs) in order to
 Assume you are working on a file names =filename.org=. In order to export all of the same type blocks into a single file =filename.ext=, you may add the arguments =:tangle yes= to each of the code blocks you wish to output. For example:
 
 #+begin_src
-#+begin_src elisp :tangle yes
++begin_src elisp :tangle yes
 (setq x 10)
-#+end_src
++end_src
 #+end_src
 
 Note that if you have multiple types of codeblocks, for example a Javascript, a Python, a Elisp, and run =org-babel-tangle=, it will output files for each of those extensions:
