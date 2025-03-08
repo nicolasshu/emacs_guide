@@ -3,6 +3,7 @@
 In order to run the code blocks below in your system, you can use =C-c C-c= (=org-ctrl-c-ctrl-c=) or =, ,= (Spacemacs). This will create a =RESULTS= block underneath it showing the result. For example:
 
 #+begin_src 
+;; Look at this
 #+begin_src elisp :tangle yes
 (setq x 10)
 #+end_src
