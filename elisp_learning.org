@@ -452,3 +452,287 @@ By adding the term =(interactive)=, it allows your function to be interactive. T
 #+RESULTS:
 : Hello, Nick!
 
+* More
+** Text Manipulation Functions
+=insert=: Inserts text at the point (cursor position).
+
+#+begin_src elisp
+(insert "Hello, world!")
+#+end_src
+
+=delete-char=: Deletes the character at the point (cursor position).
+
+#+begin_src elisp
+(delete-char 1)  ;; Delete one character to the right of the cursor
+#+end_src
+
+=delete-region=: Deletes the text between two points (regions).
+
+#+begin_src elisp
+(delete-region (point) (mark))  ;; Deletes the region between point and mark
+#+end_src
+
+=upcase-region=: Converts all the text in a region to uppercase.
+
+#+begin_src elisp
+(upcase-region (point) (mark))
+#+end_src
+
+=downcase-region=: Converts all the text in a region to lowercase.
+
+#+begin_src elisp
+(downcase-region (point) (mark))
+#+end_src
+
+=capitalize-region=: Capitalizes the first letter of each word in a region.
+
+#+begin_src elisp
+(capitalize-region (point) (mark))
+#+end_src
+
+=replace-regexp=: Replaces a regular expression match with a replacement string in a region.
+
+#+begin_src elisp
+(replace-regexp "foo" "bar")  ;; Replaces all occurrences of "foo" with "bar"
+#+end_src
+
+** Buffer and Window Management
+
+=switch-to-buffer=: Switches to the specified buffer.
+
+#+begin_src elisp
+(switch-to-buffer "*scratch*")  ;; Switch to the *scratch* buffer
+#+end_src
+
+=get-buffer-create=: Returns an existing buffer or creates a new one.
+
+#+begin_src elisp
+(get-buffer-create "my-buffer")  ;; Creates a buffer named "my-buffer"
+#+end_src
+
+=kill-buffer=: Kills a buffer.
+
+#+begin_src elisp
+(kill-buffer "*scratch*")  ;; Kills the *scratch* buffer
+#+end_src
+
+=save-buffer=: Saves the current buffer to its associated file.
+
+#+begin_src elisp
+(save-buffer)  ;; Save the current buffer
+#+end_src
+
+=insert-file-contents=: Inserts the contents of a file into the current buffer.
+
+#+begin_src elisp
+(insert-file-contents "/path/to/file.txt")
+#+end_src
+
+=find-file=: Opens a file in a new buffer.
+
+#+begin_src elisp
+(find-file "/path/to/file.txt")
+#+end_src
+
+=split-window-right=: Splits the current window horizontally.
+
+#+begin_src elisp
+(split-window-right)
+#+end_src
+
+=delete-window=: Deletes the current window.
+
+#+begin_src elisp
+(delete-window)
+#+end_src
+
+** Cursor and Point Management
+
+=point=: Returns the current position of the cursor (point).
+
+#+begin_src elisp
+(point)  ;; Returns the current point (position of the cursor)
+#+end_src
+
+=goto-char=: Moves the cursor (point) to the specified position.
+
+#+begin_src elisp
+(goto-char 10)  ;; Moves the point to position 10
+#+end_src
+
+=move-beginning-of-line=: Moves the cursor to the beginning of the current line.
+
+#+begin_src elisp
+(move-beginning-of-line 1)  ;; Moves the cursor to the start of the line
+#+end_src
+
+=move-end-of-line=: Moves the cursor to the end of the current line.
+
+#+begin_src elisp
+(move-end-of-line 1)  ;; Moves the cursor to the end of the line
+#+end_src
+
+=forward-char=: Moves the cursor forward by a specified number of characters.
+
+#+begin_src elisp
+(forward-char 1)  ;; Moves the point one character forward
+#+end_src
+
+=backward-char=: Moves the cursor backward by a specified number of characters.
+
+#+begin_src elisp
+(backward-char 1)  ;; Moves the point one character backward
+#+end_src
+
+=beginning-of-buffer=: Moves the cursor to the beginning of the buffer.
+
+#+begin_src elisp
+(beginning-of-buffer)
+#+end_src
+
+=end-of-buffer=: Moves the cursor to the end of the buffer.
+
+#+begin_src elisp
+(end-of-buffer)
+#+end_src
+
+** Working with Lists
+
+=car=: Returns the first element of a list.
+
+#+begin_src elisp
+(car '(1 2 3))  ;; Returns 1
+#+end_src
+
+=cdr=: Returns the rest of the list (everything but the first element).
+
+#+begin_src elisp
+(cdr '(1 2 3))  ;; Returns (2 3)
+#+end_src
+
+=cons=: Creates a new pair (a cons cell) by prepending an element to a list.
+
+#+begin_src elisp
+(cons 0 '(1 2 3))  ;; Returns (0 1 2 3)
+#+end_src
+
+=list=: Creates a list from the arguments.
+
+#+begin_src elisp
+(list 1 2 3)  ;; Returns (1 2 3)
+#+end_src
+
+=length=: Returns the length of a list.
+
+#+begin_src elisp
+(length '(1 2 3))  ;; Returns 3
+#+end_src
+
+=member=: Checks if an element is a member of a list.
+
+#+begin_src elisp
+(member 2 '(1 2 3))  ;; Returns (2 3) because 2 is in the list
+#+end_src
+
+=append=: Appends two lists together.
+
+#+begin_src elisp
+(append '(1 2) '(3 4))  ;; Returns (1 2 3 4)
+#+end_src
+
+** Conditionals and Flow Control
+
+=if=: Conditional expression.
+
+#+begin_src elisp
+(if (> 3 2) "Yes" "No")  ;; Returns "Yes"
+#+end_src
+
+=cond=: Multi-way conditional (like a series of if statements).
+
+#+begin_src elisp
+(cond
+ ((> 3 2) "Yes")
+ ((< 3 2) "No")
+ (t "Maybe"))  ;; Returns "Yes"
+#+end_src
+
+=while=: While loop.
+
+#+begin_src elisp
+(setq i 0)
+(while (< i 5)
+  (setq i (+ i 1))
+  (message "i is %d" i))  ;; Prints i from 0 to 4
+#+end_src
+
+=progn=: Evaluates multiple expressions sequentially.
+
+#+begin_src elisp
+(progn
+  (message "First message")
+  (message "Second message"))  ;; Prints two messages
+#+end_src
+
+=catch= and =throw=: Handle control flow with labels (like break or continue).
+
+#+begin_src elisp
+    (catch 'done
+      (dotimes (i 10)
+        (if (= i 5)
+            (throw 'done "Loop finished early"))
+        (message "i is %d" i)))
+    ;; Prints i from 0 to 4 and then finishes early
+#+end_src
+
+** File I/O Functions
+
+=write-file=: Writes the contents of the current buffer to a file.
+
+#+begin_src elisp
+(write-file "/path/to/file.txt")
+#+end_src
+
+=insert-file-contents=: Inserts the contents of a file into the current buffer.
+
+#+begin_src elisp
+(insert-file-contents "/path/to/file.txt")
+#+end_src
+
+=rename-file=: Renames a file.
+
+#+begin_src elisp
+(rename-file "/path/to/old-name.txt" "/path/to/new-name.txt")
+#+end_src
+
+=delete-file=: Deletes a file.
+
+#+begin_src elisp
+(delete-file "/path/to/file.txt")
+#+end_src
+
+** User Interface Functions
+
+=message=: Displays a message in the minibuffer.
+
+#+begin_src elisp
+(message "Hello, Emacs!")
+#+end_src
+
+=read-string=: Prompts the user to enter a string.
+
+#+begin_src elisp
+(read-string "What is your name? ")
+#+end_src
+
+=read-number=: Prompts the user to enter a number.
+
+#+begin_src elisp
+(read-number "What is your age? ")
+#+end_src
+
+=completing-read=: Prompts the user with a list of possible completions.
+
+#+begin_src elisp
+(completing-read "Pick a fruit: " '("apple" "banana" "cherry"))
+#+end_src
