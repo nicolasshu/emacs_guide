@@ -2,7 +2,7 @@
 ** Notes
 For this guide, for the purposes of rendering the code block parameters, when showing examples of code blocks, instead of using =#+BEGIN_SRC=, we will use =\#+BEGIN_SRC=
 ** Executing Blocks
-In order to run the code blocks below in your system, you can use =C-c C-c= (=org-ctrl-c-ctrl-c=) or =, ,= (Spacemacs). This will create a =RESULTS= block underneath it showing the result. For example:
+In order to run the code blocks below in your system, you can use =org-ctrl-c-ctrl-c= (=C-c C-c= or =, ,= in Spacemacs). This will create a =RESULTS= block underneath it showing the result. For example:
 
 #+begin_src org
 ,#+begin_src elisp :tangle yes
@@ -45,7 +45,18 @@ x = 10
 (setq x 10)
 \#+end_src
 #+end_src
-* Basic
+* Messages
+In order to output a log, you can use =message=. 
+? Does it always expect strings?
+
+#+begin_src elisp
+(message "Hello, %s!" "Nick")
+#+end_src
+
+#+RESULTS:
+: Hello, Nick!
+
+* Variables
 To set up variables, we can use =setq=.
 
 #+begin_src elisp :tangle yes
@@ -54,4 +65,390 @@ To set up variables, we can use =setq=.
 
 #+RESULTS:
 : 10
+
+You can assign multiple variables at once as well
+#+begin_src elisp
+(setq y 20 z 30)
+#+end_src
+
+#+begin_src elisp
+(setq my-list '(1 2 3 4))
+#+end_src
+
+Because of the whitespace requirement as separators, it gives you flexibility for different readabilities. E.g.,
+
+#+begin_src elisp
+(setq my-list '(1
+                2
+                3
+                4))
+#+end_src
+
+Lists are inherently Cons Cells. See [[*Cons Cells]]
+
+In order to obtain the nth value of a list, you can use =nth=.
+
+#+begin_src elisp
+(setq my-list '("a" "b" "c" "d" "e"))
+(nth 2 my-list)
+#+end_src
+
+#+RESULTS:
+: c
+
+* Let
+The statement =let= differs from =setq= in a way that =let= creates local variables within a scope, whereas =setq= creates global variables. For example,
+
+#+begin_src elisp
+(let ((x 10) (y 20))
+  (message "x=%d and y=%d" x y))
+#+end_src
+
+#+RESULTS:
+: x=10 and y=20
+
+Note how we are setting the variables inside a nested parenthesis. This is because =let= expects a *list of bindings* to be provided as the first argument, and each of the binding must be in form of a *pair*, where the 1st element is the variable and the 2nd element is the value. Therefore, the correct syntax for =let= is:
+
+#+begin_src elisp
+(let ((var1 value1)
+      (var2 value2))
+  ;; body of code
+)
+#+end_src
+
+You can also create lists. Lists are *always* separated by whitespaces. Note in the example below that there is a ='= in front of the list. This is a shorthand for =quote=, to interpret the following input as a literal value. Otherwise, it would try to run the function =1=, which does not exist. Commas are not valid separators in Lisp languages.
+
+* Cons Cells
+TODO: Establish what Cons Cells are.
+Cons cells are a fundamental data structure that represent pairs of values. They are essentially used to build lists, pairs, and other more complex data structure. A *cons cell* is a pair of two objects, which are often referred to as *car* and *cdr*. The first value is stored in the *car* (aka head or first), and the second value is stored in the *cdr* (aka tail or rest). A cons cell is created using the =cons= function, which takes two args and returns a pair (i.e., a cons cell)
+
+#+begin_src elisp
+(cons "a" 2)
+#+end_src
+
+#+RESULTS:
+: (a . 2)
+
+This means that you can obtain the car or the cdr of the cons cell
+
+#+begin_src emacs-lisp
+(setq my-cons (cons 1 2))
+(message "The car of the cons is %s and the cdr of the cons is %s" (car my-cons) (cdr my-cons))
+#+end_src
+
+#+RESULTS:
+: The car of the cons is 1 and the cdr of the cons is 2
+
+So, lists in fact are chains of cons cells. For example, a list =(1 2 3)= is represented as below. For this reason, the =car= and =cdr= of the list are:
+
+#+begin_src elisp
+(setq my-list (cons 1 (cons 2 (cons 3 nil))))
+(message "The car of the list is %s and the cdr of the list is %s" (car my-list) (cdr my-list))
+#+end_src
+
+#+RESULTS:
+: The car of the list is 1 and the cdr of the list is (2 3)
+
+Associative lists (alists): An alist is a list of cons cells, where each cons cell represents a key-value pair. It's commonly used for simple mappings.
+
+#+begin_src elisp
+(setq alist '((name . "John") (age . 30)))
+(cdr (assoc 'name alist))  ;; Returns "John"
+#+end_src
+
+#+RESULTS:
+: John
+
+
+* Functions
+You can define functions with =defun=.
+#+begin_src elisp
+(defun my_func (arg)
+  "This function prints a string showing the argument passed in"
+  (message "The argument passed in was %s!" arg)
+)
+(my_func 1)
+#+end_src
+
+#+RESULTS:
+: The argument passed in was 1!
+
+You can pass in multiple arguments at once:
+#+begin_src elisp
+(defun addNums (x y)
+  (message "%f + %f = %f" x y (+ x y))
+)
+(addNums 7 9)
+#+end_src
+
+#+RESULTS:
+: 7.000000 + 9.000000 = 16.000000
+
+In order to return values themselves, you may simply return it as the code itself.
+#+begin_src elisp
+(defun addNums (a b)
+  ;    list          list
+  ;    v             v
+  (let ((sum (+ a b)))
+  ;     ^           ^
+  ;     pair      pair
+    sum
+   )
+)
+(addNums 2 3)
+#+end_src
+
+#+RESULTS:
+: 5
+
+you may simply return the values using =list=. This turn around, note how we will use the =let= statement in order to create local variables.
+
+#+begin_src elisp
+(defun add-multiply (a b)
+  (let ((sum (+ a b))
+        (product (* a b))
+       )
+    (list sum product)
+   )
+)
+(add-multiply 2 3)
+#+end_src
+
+#+RESULTS:
+| 5 | 6 |
+
+If you wish to use optional arguments, you will need to use =&optional= as a separator to separate the required arguments first from the optional arguments. Then, you can use =or= inside the function to assign default values to the optional arguments in case they are not provided.
+
+#+begin_src elisp
+(defun add_or_multiply (a b &optional return_sum dummy)
+  (let ((sum (+ a b))                    ; Compute the sum a+b
+        (prod (* a b))                   ; Compute the product a+b
+        (return_sum (or return_sum t))   ; Boolean to return sum. By default, t (true)
+        (dummy (or dummy nil))            ; Boolean for nothing. By default, nil (false)
+        )
+    (message "The dummy variable is %s" dummy)
+    (if return_sum
+        sum
+        prod
+        )
+    )
+
+)
+; TODO: Fix this
+(add_or_multiply 2 3 nil)
+#+end_src
+
+#+RESULTS:
+: 5
+
+* Conditional Statements
+** =when= statement
+A =when= statement is effectively a =if= statement but without an =else= statement. They behave the same if there is not else given.
+
+#+begin_src elisp
+(when condition
+  then-branch
+  )
+#+end_src
+
+** =if= statement
+For conditional statements, you may use global variables, and return based on a conditional. For =if= statements, the syntax is shown below. The =else-branch= is actually optional, and if it is not given, then it behaves as a =when= statement.
+#+begin_src elisp
+(if condition
+    then-branch
+  else-branch)
+#+end_src
+
+Therefore, as an example, you can do:
+
+#+begin_src elisp
+(setq x 10)
+(if (>= x 5)
+    t
+)
+#+end_src
+
+#+RESULTS:
+: t
+
+By passing 2 values to the =if= statement, you get an =if= statement. By passing 3 values, you, get an =if/else= statement.
+#+begin_src elisp
+(if t
+    (message "This is t (true)")
+    (message "This is nil (false)")
+)
+#+end_src
+
+#+RESULTS:
+: This is t (true)
+
+** =cond= statement
+The =cond= statement is helpful to deal with multiple conditions. In the example below, the last condition is a true statement =t=. This works as a catch-all that matches if no other previous condition is true.
+
+#+begin_src elisp
+(cond
+ (condition1 result1)
+ (condition2 result2)
+ (condition3 result3)
+ (t default-result)
+)
+#+end_src
+
+As an example,
+#+begin_src elisp
+(setq x 10)
+(cond
+  ((> x 15) (message "x is greater than 15"))
+  ((> x 5) (message "x is greater than 5"))
+  ((> x 0) (message "x is positive"))
+  (t (message "x is non-positive")))
+#+end_src
+
+#+RESULTS:
+: x is greater than 5
+
+** =unless= statement
+The =unless= statement is the opposite of =when=. You may think of it as an =if-not= statement. So you can set it as:
+
+#+begin_src elisp
+(setq x 3)
+(unless (> x 5)
+  (message "x is not greater than 5"))
+#+end_src
+
+#+RESULTS:
+: x is not greater than 5
+
+* Loops
+** =while= Loop
+The =while= loop is the most common.
+
+#+begin_src elisp
+(setq x 0)
+(while (< x 5)
+  (message "x = %d" x)
+  (setq x (+ x 1))
+)
+#+end_src
+
+#+RESULTS:
+: x = 0
+: x = 1
+: x = 2
+: x = 3
+: x = 4
+
+** =dotimes= Loop
+
+The =dotimes= loop is specifically designed to running a block of code some given number of times. It's good to know in advance the number of iterations.
+
+#+begin_src elisp
+(dotimes (i 5)
+  (message "i = %d" i)
+)
+#+end_src
+
+#+RESULTS:
+: i = 0
+: i = 1
+: i = 2
+: i = 3
+: i = 4
+
+** =dolist= Loop
+
+The =dolist= loop iterates through each element of a list.
+
+#+begin_src elisp
+(setq my-list '(10 20 30 40 50))
+(dolist (x my-list)
+  (message "x = %d" x)
+)
+#+end_src
+
+#+RESULTS:
+: x = 10
+: x = 20
+: x = 30
+: x = 40
+: x = 50
+
+** =cl-loop= (More Advanced from =cl-lib=)
+
+There's a more advanced and flexible =cl-loop= function. It can be used for a variety of tasks. Its syntax is
+
+#+begin_src elisp
+(loop for var in list do
+      body)
+#+end_src
+
+An example is:
+
+#+begin_src elisp
+(loop for x in '(1 2 3 4 5) do
+      (message "x is %d" x))
+#+end_src
+
+Another example is
+
+#+begin_src elisp
+(loop for i from 1 to 5
+      summing i)
+#+end_src
+
+In order to use similar to Python's =enumerate=, you can do
+#+begin_src elisp
+(setq my-list '(a b c))
+(dotimes (i (length my-list))
+  (message "%d %s" i (nth i my-list))
+)
+#+end_src
+
+#+RESULTS:
+: 0 a
+: 1 b
+: 2 c
+
+In order to use iterate through two lists at the same time, you may do
+
+#+begin_src elisp
+(setq my-list '(a b c))
+(setq my-List '(A B C))
+(dotimes (i (length my-list))
+  (message "%d %s %s" i (nth i my-list) (nth i my-List))
+)
+#+end_src
+
+#+RESULTS:
+: 0 a A
+: 1 b B
+: 2 c C
+
+** TODO: Break
+** TODO: Continue
+* Emacs Functions
+Show integration with Emacs functions
+** Anonymous Functions
+
+#+begin_src elisp
+(mapcar (lambda (x) (* x 2)) '(1 2 3 4 5))  ;; Doubles each element in the list
+#+end_src
+
+#+RESULTS:
+| 2 | 4 | 6 | 8 | 10 |
+
+* Interactive
+By adding the term =(interactive)=, it allows your function to be interactive. This means, that it can be used via =M-x greet-user=. Below, =read-string= will ask for a value in the minibuffer. Now you can either execute (=C-c C-c= / =, ,= / =org-ctrl-c-ctrl-c=)
+
+#+begin_src elisp
+(defun greet-user ()
+  "Ask for the user's name and greet them."
+  (interactive)
+  (let ((name (read-string "What is your name? ")))  ;; Prompt for name
+    (message "Hello, %s!" name)))  ;; Greet the user by name
+(greet-user)
+#+end_src
+
+#+RESULTS:
+: Hello, Nick!
 
