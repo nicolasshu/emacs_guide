@@ -1,0 +1,70 @@
+#+TITLE: Tangling
+* Introduction
+** TODO What is Literate Programming
+** TODO Write description of what is tangling
+* Usage
+You may use =org-babel-tangle= (=C-c C-v t= or =, b t= in Spacemacs) in order to export your code blocks into a file. There are two ways to do so:
+
+** Export Selected Blocks into Same File
+Assume you are working on a file names =filename.org=. In order to export all of the same type blocks into a single file =filename.ext=, you may add the arguments =:tangle yes= to each of the code blocks you wish to output. For example:
+
+#+begin_src org
+,#+begin_src elisp :tangle yes
+(setq x 10)
+,#+end_src
+#+end_src
+
+Note that if you have multiple types of codeblocks, for example a Javascript, a Python, a Elisp, and run =org-babel-tangle=, it will output files for each of those extensions:
+  - =filename.js=
+  - =filename.py=
+  - =filename.el=
+
+** Export Every Block into a File
+
+You are able to export every block with some signature into a file, and that way, you don't have to declare =:tangle yes= at every selected code block. This can be achieved by adding the property of tangling given some =header-args=. As an example, we'll have the following org mode file:
+
+#+begin_src org
+,#+TITLE: My Org Tangle
+,#+PROPERTY: header-args:shell :tangle ./my_config
+
+Hello, this is my setup for an i3wm configuration file. I will first define my modifier key to be my Super key (i.e. Mod4)
+
+,#+begin_src shell
+set $mod Mod4
+,#+end_src
+
+Next, I will define what is up, down, left and right. For that, I'll use the Vim keybindings.
+
+,#+begin_src shell
+set $up l
+set $down k
+set $left j
+set $right semicolon
+,#+end_src
+#+end_src
+
+By tangling the file above, it will generate a file =my_config= containing:
+
+#+begin_src shell
+set $mod Mod4
+
+set $up l
+set $down k
+set $left j
+set $right semicolon
+#+end_src
+
+** Export Individual Blocks into Separate Files
+In order to set individual code blocks to be tangled into specific files, add the argument =:tangle filename.ext= to the code block definition. For example:
+
+#+begin_src org
+,#+begin_src python :tangle my_python.py
+x = 10
+,#+end_src
+#+end_src
+
+#+begin_src org
+\#+begin_src python :tangle my_elisp.el
+(setq x 10)
+\#+end_src
+#+end_src
