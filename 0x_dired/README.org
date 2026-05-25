@@ -1,0 +1,34 @@
+#+TITLE: Dired
+
+* Navigate
+
+You may use your regular navigation keybindings to navigate around. You can use =-= to go up in the directory level
+
+* Create a new directory
+
+In order to create a new directory, run the function =dired-create-directory=
+  - =M-x dired-create-directory=
+  - =+= (Spacemacs)
+
+* Rename Multiple Files
+
+Here, you'll learn to use Dired to rename multiple files
+
+First, launch =dired=:
+  - =M-x dired= or =C-x d=
+  - =SPC f f= (Spacemacs)
+  - =SPC f f= (Doom Emacs)
+
+Next, navigate to =rename_me/=. You'll see files as such:
+
+#+begin_src text
+C -rw-r--r-- 1 nickshu nickshu    4 May 25 04:49   img_tag_1.json
+C -rw-r--r-- 1 nickshu nickshu    4 May 25 04:49   img_tag_2.json
+C -rw-r--r-- 1 nickshu nickshu    4 May 25 04:49   img_tag_3.json
+C -rw-r--r-- 1 nickshu nickshu    4 May 25 04:49   img_tag_4.json
+C -rw-r--r-- 1 nickshu nickshu    4 May 25 04:49   img_tag_5.json
+#+end_src
+
+Enter =INSERT MODE= (=i=) and exit it (=ESC=) just to get to =NORMAL MODE=. Now, navigate through the file names on this buffer to rename them. You are able to treat the buffer as an ASCII file.
+
+Once you are done editing it, you may run =C-c C-c= (=wdired-finish-edit=) to apply your changes or =C-c ESC= (=wdired-abort-changes=)
