@@ -1,0 +1,7 @@
+EmployeeID,Name,Department,City,Score,SalaryUSD,StartDate,Remote,
+A-1001,Ada Lovelace,Engineering,London,98,125000,2026-01-15,True,
+A-1002,Grace Hopper,Engineering,New York,95,132000,2025-11-03,True
+A-1003,Katherine Johnson,Research,Hampton,99,128500,2026-03-22,False
+A-1004,Alan Turing,Research,Manchester,91,121000,2024-09-10,True
+A-1005,Margaret Hamilton,Operations,Boston,88,117500,2025-07-01,True
+A-1006,Donald Knuth,Engineering,Stanford,93,140000,2023-05-18,False

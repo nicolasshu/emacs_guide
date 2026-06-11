@@ -1,0 +1,9 @@
+#+TITLE: Org-Journal
+
+
+* Things to do
+** TODO Create a directory for journals
+** TODO Create a few files
+
+* Installation
+* Usage

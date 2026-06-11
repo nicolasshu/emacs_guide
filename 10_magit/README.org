@@ -1,0 +1,15 @@
+#+TITLE: Magit
+
+* Clone a repository
+* Add files
+
+* Usage
+
+=magit-status=
+=SPC g s= (Spacemacs)
+
+- =magit-stage= / =s=
+- =magit-unstage= / =u=
+
+- =c= Commit
+  - =c= 

@@ -1,0 +1,84 @@
+#+TITLE: Basics
+
+* Vocabulary
+** Vocabulary
+=C=: Control
+   E.g. =C-x C-e= means =Ctrl+X (then) Ctrl+E=
+=M=: Meta key, usually =Alt=
+   E.g. =M-:= means =Alt+Shift+;=
+
+Evaluate an expression: =M-:=
+Running a command: =M-x=
+
+** Windows
+
+A window is a visual interface that displays different types of buffers. These can be split between different files.
+
+** Buffers
+
+Buffers are reproductions of an actual file or a temporary file or simply a message. They are often displayed in windows. They do not need to be visible in order to be opened. You may switch buffers
+
+- =switch-to-buffer=
+- =compleseus-switch-to-buffer=
+- =SPC b b= (Spacemacs)
+
+* Execute Commands
+
+Split window vertical
+  - =split-window-right=
+  - =SPC w v= (Spacemacs)
+
+Split window horizontal
+  - =split-window-below=
+  - =SPC w s= (Spacemacs)
+
+Close window
+  - =delete-window=
+  - =SPC w d= (Spacemacs)
+
+Close window
+  - =delete-window=
+  - =SPC w d= (Spacemacs)
+
+Split window in 4 grid
+  - =window-split-grid=
+  - =SPC w 4= (Spacemacs)
+
+Resize your window
+  - =shrink-window-horizontally=
+  - =C-x {= (Vanilla)
+
+  - =enlarge-window-horizontally=
+  - =C-x }= (Vanilla)
+
+* Create a new file
+
+We can create new files by finding a file. When we "find a file" that does not exist, you end up creating a new file.
+
+- =find-file=
+- =SPC f f=  (Spacemacs)
+- =C-x C-f= (Vanilla)
+
+This will open a new buffer. The file will not be created until you save.
+
+* Save Files
+
+In order to save your file, you can run the following command:
+
+- =save-buffer=
+- =SPC f s=
+- =C-x C-s= (Vanilla)
+
+* Evil Mode
+
+Emacs is not a text editor. It is a programmable environment with a Lisp interpreter. It also happens to have a text editor in it.
+
+People write Elisp code in forms of functions, operations, and compile them into packages.
+
+Now we will install our first package.
+
+
+TODO: INSERT INSTRUCTIONS ON HOW TO INSTALL EVIL MODE
+
+
+At this point, you should be able to use Vim keybindings in order to edit your files.

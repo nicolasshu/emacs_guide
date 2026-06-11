@@ -19,6 +19,19 @@ Note that if you have multiple types of codeblocks, for example a Javascript, a 
   - =filename.py=
   - =filename.el=
 
+** Export Some Blocks to a Specific File
+Frankly, the best way to do so is to add the following to the top of your file
+
+#+begin_src org
+,#+PROPERTY: header-args:lua :tangle myconfig.lua
+#+end_src
+
+and every time you don't want to tangle a code block, to add =:tangle no=.
+
+#+begin_quote
+I haven't found a better way to do so.
+#+end_quote
+
 ** Export Every Block into a File
 
 You are able to export every block with some signature into a file, and that way, you don't have to declare =:tangle yes= at every selected code block. This can be achieved by adding the property of tangling given some =header-args=. As an example, we'll have the following org mode file:

@@ -1,0 +1,117 @@
+#+TITLE: Spacemacs
+
+* Vanilla Emacs
+
+Emacs will usually store your configuration files as well as your packages under
+
+#+begin_src 
+~/.emacs.d
+#+end_src
+
+There will be configuration files that you may edit there. For this instructions, we will no longer be using the vanilla Emacs. Instead, we will use something a little bit more accessible: Spacemacs
+
+* Spacemacs
+
+** Installation
+
+Go to https://www.spacemacs.org/ and follow the installation steps there
+
+#+begin_src 
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+#+end_src
+
+This will install an entire set of configurations and pre-installed packages under your =~/.emacs.d/= directory.
+
+At your first start, you will be prompted to setup a few of the basic configuration. After you've setup the basic configurations, you will see a new file under your home directory: =$HOME/.spacemacs=
+
+
+** Spacemacs Dotfile
+
+In order to access your Spacemacs dotfile, you may run:
+
+  - =spacemacs/find-dotfile=
+  - =SPC f e d=
+
+This dotfile is very well documented, but it is also a few hundreds of lines. We will go over some of the more important parts to consider.
+
+*** Installing Packages
+
+Spacemacs is extensible via layers or via packages. Installing packages is the most common way of extending Emacs, which is often agnostic of the flavor of Emacs that you're using. Layers is specific to Spacemacs.
+
+The rationale behind layers is such that:
+
+  - there are some of packages that are very common to be used or
+  - there are combinations of packages that naturally work really well together
+
+Therefore, Spacemacs offers configuration layers right out-of-the-box that can be used. These can be found under:
+
+#+begin_src elisp
+(defun dotspacemacs/layers ()
+  ...
+  dotspacemacs-configuration-layers
+  '(
+    layer_a
+    layer_b
+    layer_c
+    )
+  ...
+  )
+#+end_src
+
+Unfortunately, there are too many packages to be covered over layers. Therefore, you may also look for packages that may exist on ELPA, MELPA, or QUELPA via
+
+#+begin_src elisp
+(defun dotspacemacs/layers ()
+  ...
+  dotspacemacs-additional-packages
+  '(
+    package_1
+    package_2
+    package_3
+    )
+  ...
+  )
+#+end_src
+
+**** Install a Layer
+
+Let's add =csv= to the configuration layers, and then open the file =csv_demo.csv=.
+
+
+**** Install a Package
+
+Now, let's add =python-black= to the additional packages
+
+Next, open the =black_demo.py= file. As you may see, it is poorly written. So you can run the command =python-black ------= to properly configure the file.
+
+
+*** Configurations
+
+You may add packages, but their default configuration may not be to your liking. All of your additional configurations can go under
+
+#+begin_src elisp
+(defun dotspacemacs/user-config ()
+  ...
+  )
+#+end_src
+
+At this point, you may add any Elisp code here.
+
+Let's add the following configurations to the =user-config=.
+
+#+begin_src elisp
+;; CSV
+(add-hook 'csv-mode-hook 'csv-align-mode)
+
+;; Set Tab to insert 4 spaces
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
+
+;; Show line numbers and show them as relative numbers
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(setq display-line-numbers-type 'relative)
+
+;; Wrap Lines
+(add-hook 'text-mode-hook 'visual-line-mode)
+#+end_src
