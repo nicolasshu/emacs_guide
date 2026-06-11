@@ -1,0 +1,24 @@
+* Figures
+
+** Single Image
+#+CAPTION: Caption for (a) image on the left and (b) image on the right
+#+LABEL: fig:myfig
+#+ATTR_LATEX: :align center :width 0.7\linewidth
+[[./image.png]]
+
+See Figure [[fig:myfig]]
+
+** Double Images
+
+#+begin_center
+#+ATTR_LATEX: :center :width 0.5\linewidth
+[[./image1.png]]
+#+ATTR_LATEX: :center :width 0.5\linewidth
+[[./image2.png]]
+#+CAPTION: Caption for (a) image on the left and (b) image on the right
+#+ATTR_LATEX: :height 0.0001cm
+#+LABEL: fig:myfig
+[[./empty.png]]
+#+end_center
+
+See Figure [[fig:myfig]]

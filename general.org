@@ -1,0 +1,15 @@
+* Text
+** Remove blank linees
+#+begin_src
+M-x flush-lines RET ^$ RET
+#+end_src
+
+** Remove lines with whitespace
+#+begin_src
+M-x flush-lines RET ^\s.*$ RET
+#+end_src
+
+** Remove whitespace
+#+begin_src
+delete-trailing-whitespace
+#+end_src
