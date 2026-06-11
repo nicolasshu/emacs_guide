@@ -1,1 +1,18 @@
+#+TITLE: Citation Management
 * Citar
+* Tasks
+** TODO Create multiple bib files
+** TODO 
+* Installation
+
+Install citar
+Install arxiv
+
+* Usage
+
+Show how you can:
+
+1) Add more entries to bib file
+2) Add notes to a publication
+3) Pull the publication via URL
+4) Pull publication via file

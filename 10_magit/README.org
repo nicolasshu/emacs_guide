@@ -11,5 +11,9 @@
 - =magit-stage= / =s=
 - =magit-unstage= / =u=
 
-- =c= Commit
-  - =c= 
+- =magit-commit= / =c=: Commit Prompt
+  - =c=: Commit
+
+
+- =magit-push= / =p=: Push Prompt
+  - =u=: To origin
