@@ -1,2 +1,36 @@
-* Install LaTeX
-* Using LaTeX
+* Install LaTeX Engine
+
+
+* Make LaTeX Accessible by Emacs
+
+* Using LaTeX within Org Mode
+
+Once you have the necessary tooling, you can start to simply write LaTeX as if you were writing any LaTeX document.
+
+
+Insert Schrodinger equation
+Demonstrate sole equations, and inline equations
+
+
+
+* Exporting to PDF via LaTeX
+
+If you have an org file that you are interested in submitting as an official document, you can treat it as such and export it via LaTeX. Ideally, you'll want to have at least a title for your document. This can be achieved by adding this to the top:
+
+#+begin_src org
+,#+TITLE: Story of My Life
+#+end_src
+
+You can also add specific LaTeX headers to your document. For example:
+
+#+begin_src org
+,#+TITLE: Story of My Life
+#+,LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+#+,LATEX_HEADER: \usepackage{minted}
+#+,LATEX_HEADER: \usemintedstyle{emacs}
+#+,LATEX_HEADER: \usepackage[ttscale=0.7]{libertine}
+#+end_src
+
+Finally, you can export this file via
+
+  - =org-latex-export-to-pdf=

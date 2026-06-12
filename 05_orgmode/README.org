@@ -1,6 +1,286 @@
 * Org Mode
 
-Basics
-Inline Images
-Inline GIFs
-Mermaid / D2 Lang
+** Basics
+*** A Different Markdown
+- Markdown is primarily a formatting language.
+- Org Mode is a formatting language, outlining tool, task manager, literate programming environment, and personal knowledge system.
+
+Or Mode treats documents as trees:
+
+#+begin_src org
+,* Level 1 Heading
+,** Level 2 Heading
+,*** Level 3 Heading
+,**** Level 4 Heading
+#+end_src
+
+You can collapse and expand sections interactively inside Emacs by pressing =TAB=
+
+
+#+begin_src org
+Like in Markdown, you can have [[https://google.com][links]]. You can also have texts in /italics/, *bolded*, _underlined_, with ~strikethroughs~, in =verbatim=, and in ~code style~.
+#+end_src
+
+A lot of their code blocks are represented slightly different, in a way that resembles LaTeX.
+
+#+begin_quote
+You can have quotes
+#+end_quote
+
+#+begin_src org
+,#+begin_quote
+You can have quotes
+,#+end_quote
+#+end_src
+
+#+begin_src markdown
+You can also have code blocks
+#+end_src
+
+#+begin_src org
+,#+begin_src markdown
+You can also have code blocks
+,#+end_src
+#+end_src
+
+*** Footnotes
+
+Try adding the following to your org file
+
+#+begin_src org
+Org Mode also supports footnotes.[fn:1]
+
+[fn:1] This is a footnote.
+#+end_src
+
+*** Unordered Lists
+
+Below is a list of types of files that Org files can be exported to. We will use this as an exercise to showcase what can be done with lists. Copy the block below into your Org file.
+
+#+begin_src org
+  - HTML
+  - PDF
+  - LaTeX
+  - Markdown
+  - ODT
+  - Beamer presentations
+  - Reveal.js slides
+#+end_src
+
+Next, sort the list via:
+  - =org-sort= / =org-sort-list=
+  - =, s S= (Spacemacs)
+
+*** Tables
+
+The built-in functionality allow for easy auto-completion.
+
+Add the following to your Org file.
+
+#+begin_src org
+| Planet | Population | Size |
+#+end_src
+
+After so, open up a new line
+  - =evil-org-open-below=
+  - =o= (Spacemacs)
+
+Next, add a city name like Coruscant, and press =TAB= to jump to the next cell.
+
+#+begin_src org
+By pressing =TAB=, it will auto complete your spacing from this:
+| Planet | Population | Diameter |
+| Coruscant |            |          |
+
+to this:
+| Planet    | Population | Diameter |
+| Coruscant |            |          |
+#+end_src
+
+Next, you can add a horizontal bar by adding =-= to the first leftmost cell
+
+
+#+begin_src org
+
+|-----------+------------+----------|
+| Planet    | Population | Diameter |
+|-----------+------------+----------|
+| Coruscant |            |          |
+|-----------+------------+----------|
+#+end_src
+
+Next, put in a few values
+
+#+begin_src org
+| Planet    |    Population | Diameter |
+|-----------+---------------+----------|
+| Coruscant | 2980000000000 |    12240 |
+| Mustafar  |         15000 |     4200 |
+| Malachor  |             1 |     3000 |
+#+end_src
+
+Next, let's add a new column =Volume=. You can simply add the title "Volume" to the end and press =TAB=
+
+#+begin_src org
+| Planet    |    Population | Diameter | Volume |
+|-----------+---------------+----------+--------|
+| Coruscant | 2980000000000 |    12240 |        |
+| Mustafar  |         15000 |     4200 |        |
+| Malachor  |             1 |     3000 |        |
+#+end_src
+
+Now, let's do some operations! We'll add the following to the bottom of the table:
+
+#+begin_src org
+,#+TBLFM: $4=(4.0/3.0)*pi*(($3/2)^3);%.3e
+#+end_src
+
+#+begin_src org
+| Planet    |    Population | Diameter | Volume |
+|-----------+---------------+----------+--------|
+| Coruscant | 2980000000000 |    12240 |        |
+| Mustafar  |         15000 |     4200 |        |
+| Malachor  |             1 |     3000 |        |
+#+TBLFM: $4=(4.0/3.0)*pi*(($3/2)^3);%.3e
+#+end_src
+
+
+Now, you can execute the TBLFM command via:
+  - =org-ctrl-c-ctrl-c=
+  - =, ,= (Spacemacs)
+
+
+#+begin_src org
+| Planet    |    Population | Diameter |    Volume |
+|-----------+---------------+----------+-----------|
+| Coruscant | 2980000000000 |    12240 | 3.056e+11 |
+| Mustafar  |         15000 |     4200 | 1.235e+10 |
+| Malachor  |             1 |     3000 | 4.500e+09 |
+#+TBLFM: $4=(4.0/3.0)*pi*(($3/2)^3);%.3e
+#+end_src
+
+Now, let's add two new rows to the end, being the average:
+
+ #+begin_src org
+| Planet    |    Population | Diameter |    Volume |
+|-----------+---------------+----------+-----------|
+| Coruscant | 2980000000000 |    12240 | 3.056e+11 |
+| Mustafar  |         15000 |     4200 | 1.235e+10 |
+| Malachor  |             1 |     3000 | 4.500e+09 |
+|-----------+---------------+----------+-----------|
+| Average   |               |          |           |
+| Std. Dev  |               |          |           |
+ #+end_src
+
+
+Next, we'll start populating the new function. Keep in mind that:
+  - =@5= is the 5th row (Average row)
+  - =$2= is the population column
+  - =$3= is the diameter column
+  - =$5= is the volume column
+
+ #+begin_src org
+,#+TBLFM: @5$2=vmean(@2$2..@4$2)::@5$3=vmean(@2$3..@4$3)::@5$4=vmean(@2$4..@4$4)
+  #+end_src
+
+Now, you can execute the TBLFM command via:
+  - =org-ctrl-c-ctrl-c=
+  - =, ,= (Spacemacs)
+
+ #+begin_src org
+| Planet    |    Population | Diameter |        Volume |
+|-----------+---------------+----------+---------------|
+| Coruscant | 2980000000000 |    12240 |     3.056e+11 |
+| Mustafar  |         15000 |     4200 |     1.235e+10 |
+| Malachor  |             1 |     3000 |     4.500e+09 |
+|-----------+---------------+----------+---------------|
+| Average   | 993333340000. |     6480 | 107483330000. |
+#+TBLFM: @5$2=vmean(@2$2..@4$2)::@5$3=vmean(@2$3..@4$3)::@5$4=vmean(@2$4..@4$4)
+ #+end_src
+
+This shows that you can do quite a lot of "Excel-like" operations on your Org-mode file
+
+** Tasking
+
+#+begin_src org
+,** Tasks for Tuesday
+,*** TODO Write report for Project
+,*** NEXT Review draft
+,*** WAITING Gain approval from supervisor to publish report
+,*** DONE Obtain all data for article
+#+end_src
+
+Copy the following to your Org-Mode file
+
+#+begin_src org
+,** Tasks
+,*** TODO Checklist for Trip [/]
+  - [ ] Clothes
+  - [ ] Charger
+  - [ ] Snacks
+  - [ ] Camera
+  - [ ] Towels
+#+end_src
+
+  - [ ] Towels
+Next, check the checkboxes
+  - =org-ctrl-c-ctrl-c=
+  - =, ,= / =, T c= (Spacemacs)
+  - =C-c C-c= (Vanilla)
+  - =, T c=
+
+Copy the following to your Org-Mode file
+
+#+begin_src org
+,** Tasks for Tuesday
+,*** TODO Buy plane tickets to country X
+,*** TODO Decide destination cities
+,*** TODO Buy train tickets
+,*** TODO Reserve hotels
+#+end_src
+
++ Schedule
+  - =org-schedule=
+  - =, d s= (Spacemacs)
+    - Proceed to use =M-{hjkl}= to decide date
++ Deadlines
+  - =org-deadline=
+  - =, d d= (Spacemacs)
+    - Proceed to use =M-{hjkl}= to decide date
++ Change Status
+  - =org-todo=
+  - =, T T= (Spacemacs)
+
+** Inline Images
+
+Add the following to your org file
+
+#+begin_src org
+[[./assets/stories.jpg]]
+#+end_src
+
+Next, you can run the following:
+  - =org-toggle-inline-images=
+  - =, T i= (Spacemacs)
+
+** Inline GIFs
+
+In order to allow for GIF images to be visualized in org files, you must add the following to your configuration file.
+
+#+begin_src elisp
+;; Allow for animations (e.g. GIF) to be rendered in Org-Mode
+(add-hook 'org-mode-hook #'org-inline-anim-mode)
+(setq org-inline-anim-loop t)
+#+end_src
+
+Next, add this to your org file.
+#+begin_src org
+[[./assets/hello.gif]]
+#+end_src
+
+Next, you can run the following:
+  - =org-toggle-inline-images=
+  - =, T i= (Spacemacs)
+
+** Mermaid / D2 Lang
+In order to run these Mermaid or D2 commands, you need to make sure those tools are available to you first, and make them accessible via your terminal
