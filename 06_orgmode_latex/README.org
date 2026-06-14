@@ -1,17 +1,16 @@
 * Install LaTeX Engine
 
-
 * Make LaTeX Accessible by Emacs
 
 * Using LaTeX within Org Mode
 
 Once you have the necessary tooling, you can start to simply write LaTeX as if you were writing any LaTeX document.
 
+Below is the math/physics version of the continuous-time Fourier Transform
 
-Insert Schrodinger equation
-Demonstrate sole equations, and inline equations
+$$X(i\omega ) = \frac{1}{\sqrt{2\pi}} \int ^ \infty _\infty x(t) \cdot e^{i 2\pi \omega t} dt$$
 
-
+where $i$ is the imaginary number, $t$ is the time variable, and $\omega$ is the inverse-time variable. Above, we've shown the equation showing as a line equation, and in this paragraph, we've shown in-line equations.
 
 * Exporting to PDF via LaTeX
 
