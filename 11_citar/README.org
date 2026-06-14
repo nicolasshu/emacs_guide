@@ -1,5 +1,17 @@
 #+TITLE: Citation Management
 * Citar
+
+
+Citar is a citation management. I, as Nick Shu, have tried multiple types of citation managers. The ones I've had greatest successes with were Mendeley, Zotero, and even Papis, but I've always found problems with each of them.
+
+Mendeley, was the first one that I was introduced to, and it was great. I loved the different types of features they had, but for the love of god, I hate Elsevier. And the storage limitations were real problems with Mendeley.
+
+Zotero is a great contender for keeping track of your citations. It's great that Zotero is a FOSS, and licensed under the AGPL. It's great how it has browser connections, but it also had problems with storage limitations. There are work arounds to use WebDAVs to pair it up with Zotero, but in general, I wished it had a better method of transferability.
+
+Papis is absolutely great. It is a TUI, and actually great for its expandability. It is able to work off of a flat file structure, its transferability is built into the files themselves, and you can use it in a huge variety of systems. Unfortunately TUIs are not for everybody. I highly recommend everyone to look into Papis.
+
+I personally found that Citar is the best solution that I've found to this day. I absolutely love how it integrates with Org files, how you can pull files directly from URLs and how you can create individual notes for each of the publications.
+
 * Tasks
 ** TODO Create multiple bib files
 ** TODO 

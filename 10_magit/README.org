@@ -1,19 +1,37 @@
 #+TITLE: Magit
 
-* Clone a repository
-* Add files
+* TODO Clone a repository
 
-* Usage
+* Staging Files
 
-=magit-status=
-=SPC g s= (Spacemacs)
+In order to really get into Magit, you need to run:
+
+  - =magit-status=
+  - =SPC g s= (Spacemacs)
+  - =SPC g g= (Doom Emacs)
+
+Once the Magit dialog is a user interface. This means that there are a number of shortcuts that can be used. To stage and unstage files, run:
 
 - =magit-stage= / =s=
 - =magit-unstage= / =u=
 
+You are able to fold groups or git diffs via =TAB=, enabling you to see what has/hasn't been stages for a commit or not. You may even unfold files and select line by line via VISUAL MODE / Regions (e.g. =V= in Vim keybindings) to stage specific lines.
+
+* Commit
+
+In order to commit changes, you can run:
+
 - =magit-commit= / =c=: Commit Prompt
   - =c=: Commit
 
+* Push
+
+In order to push changes, you may run:
 
 - =magit-push= / =p=: Push Prompt
   - =u=: To origin
+
+* More
+
+You can access the =branches= interface via =magit-branch= / =b=.
+You can access the =logs= interface via =magit-log= / =l=

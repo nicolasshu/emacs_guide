@@ -1,7 +1,13 @@
 #+TITLE: Tangling
 * Introduction
-** TODO What is Literate Programming
-** TODO Write description of what is tangling
+** What is Literate Programming
+
+Literate programming is the practice of bringing documentation (often in Markup language) and code to the same medium, such that they are often intertwined with each other. Although Donald Knuth pioneered this via WEB when combining Pascal and TeX, in present day, most people have become more familiar with it with Jupyter Notebooks, which brings Python code with JSON stringing which renders Markdown, which was introduced around 2014-2015. Org-Mode has been doing this since 2011 via the Babel package to tangle their files.
+
+** Write description of what is tangling
+
+In literate programming, tangling is the act of generating compilable code from a literate program.
+
 * Usage
 You may use =org-babel-tangle= (=C-c C-v t= or =, b t= in Spacemacs) in order to export your code blocks into a file. There are two ways to do so:
 

@@ -14,7 +14,7 @@ Or Mode treats documents as trees:
 ,**** Level 4 Heading
 #+end_src
 
-You can collapse and expand sections interactively inside Emacs by pressing =TAB=
+You can collapse and expand sections interactively inside Emacs by pressing =TAB=. You can also change the heading by using =M-{left, right}=.
 
 
 #+begin_src org
