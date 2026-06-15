@@ -1,7 +1,6 @@
 #+TITLE: Citation Management
 * Citar
 
-
 Citar is a citation management. I, as Nick Shu, have tried multiple types of citation managers. The ones I've had greatest successes with were Mendeley, Zotero, and even Papis, but I've always found problems with each of them.
 
 Mendeley, was the first one that I was introduced to, and it was great. I loved the different types of features they had, but for the love of god, I hate Elsevier. And the storage limitations were real problems with Mendeley.
@@ -14,17 +13,71 @@ I personally found that Citar is the best solution that I've found to this day. 
 
 * Tasks
 ** TODO Create multiple bib files
-** TODO 
+** TODO Add 3 resources to you the bib entries
+** TODO Add a list of 3 URLs for the bib entries
 * Installation
 
 Install citar
 Install arxiv
 
+** TODO Steps [0/3]
+- [ ] Create a directory for papers
+- [ ] Create a directory for notes
 * Usage
+
+** Navigating Citar
+
+Once you have your system setup, you can open Citar via
+
+  - =citar-open=
+
+This will open a dialog under the minibuffer. This will show you all of the citations that you have across all of your =.bib= files.
+The entries will show whether you have a local PDF file, whether you have the URL to find the resource, and where you have notes associated with the resource.
+
+At this point, you may start typing keywords that may be in the title or the authors, or anything exposed by the =.bib= files.
+
+
+** Add Your Resources
+
+Your =.bib= files will act as the central place for list of publications you wish to save. That does not mean that you will have the actual resources themselves. So, at this point, let's add a resource file. Run the command:
+
+  - =citar-add-file-to-library=
+
+You will see a list of all of your bib entries. Once you've selected your entry, it will ask: =Add file from (buffer, file, url, ?): =. At this point, you may choose your the source:
+
+  - =b=: Buffer
+    + If you choose =b= / buffer, you will be adding a file associated with a buffer you have opened. The minibuffer listing all of the current buffers opened for you to choose.
+  - =f=: File
+    + If you choose =f= / file, you will get a dired that will allow you to choose the file that is to be associated with this resource
+  - =u=: URL
+    + If you choose =u= / URL, you will have the option of pasting the URL which will let it download the PDF of the resource. This URL must yield a public PDF, otherwise, it will get you HTML files.
+  - =?=: Help menu
+
+
+TODO: Now, select a resource you are interested in and add your resources
+
+** Add Notes
+
+Now, you will add notes to your resource. We will again run the following command:
+
+  - =citar-open=
+
+At this point, none of your resources will have notes, so choose whatever you want. Therefore, when you try to open a resource, it will say: "/Create Notes/". Choose that option. This will create an Org buffer which will be named after the entry name in your =.bib= file.
+
+Then, later, in the future, you can open those same notes.
+
+
+
+
+
+
+
+
+Once you select a resource, you will have the option to select (if exists)
 
 Show how you can:
 
-1) Add more entries to bib file
-2) Add notes to a publication
-3) Pull the publication via URL
-4) Pull publication via file
+- [X] Add more entries to bib file
+- [X] Add notes to a publication
+- [ ] Pull the publication via URL
+- [X] Pull publication via file
