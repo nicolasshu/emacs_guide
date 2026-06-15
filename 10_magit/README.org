@@ -17,6 +17,22 @@ Under =dotspacemacs/layers= > =dotspacemacs-configuration-layers=, add =git= lay
   )
 #+END_SRC
 
+*** Doom Emacs
+
+Under your =$DOOM/init.el=, make sure to add =magit= to the =(doom! ...)= configuration
+
+#+BEGIN_SRC elisp
+(doom!
+    ...
+    :tools
+    magit
+    ...
+    )
+#+END_SRC
+
+Then, run =doom sync= to apply the changes to your Doom configuration
+
+
 ** TODO Clone a repository
 ** Staging Files
 
