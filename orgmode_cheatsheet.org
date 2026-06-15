@@ -1,3 +1,66 @@
+#+TITLE: Org-Mode Cheatsheet
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+#+LATEX_HEADER: \usepackage{minted}
+#+LATEX_HEADER: \usemintedstyle{emacs}
+#+LATEX_HEADER: \usepackage[ttscale=0.7]{libertine}
+#+LATEX_HEADER: \usepackage{tcolorbox}
+#+LATEX_HEADER:\usepackage{xcolor}
+#+LATEX_HEADER: \newtcolorbox[auto counter, number within=section]{fancyquotes}[1][]{colframe=white!80!black, colback=black!20, boxrule=0.5mm, #1}
+
+* Tables
+
+https://emacs.stackexchange.com/questions/7375/can-i-format-cells-in-an-org-mode-table-differently-depending-on-a-formula
+https://orgmode.org/manual/Column-Groups.html#Column-groups
+
+* Python
+
+#+begin_src python :results output :exports both
+import numpy as np
+x = np.array([1,2,3])
+y = np.array([5,2,4])
+print(y)
+#+end_src
+
+#+RESULTS:
+: [5 2 4]
+
+#+begin_src python :session :results file link
+import numpy as np
+import matplotlib.pyplot as plt
+x = np.array([1,2,3])
+y = np.array([5,2,4])
+plt.plot(x,y)
+fname = "./assets/images/org_mode_cheatsheet/plot.png"
+plt.savefig(fname)
+fname
+#+end_src
+* Mermaid
+
+#+begin_src mermaid :file ./assets/images/20250424/raven_mindmap.png :theme dark :scale 2 :background-color transparent :pdf-fit
+mindmap
+  A
+   a1
+   a2
+#+end_src
+
+* D2
+#+begin_src d2 :flags --theme 200 --sketch --layout=tala :file ./assets/images/20250409/work_pattern_in_systems_analysis.png
+style.fill: "transparent"
+direction: right
+x: ""
+x {
+direction: down
+Understand\nthe situation -> Identify, Scope the\nIssues or Questions
+Identify, Scope the\nIssues or Questions -> Study the\nIssues
+Study the\nIssues -> Cohere\nDistill
+}
+x.Understand\nthe situation <-> Communication, Iteration
+x.Identify, Scope the\nIssues or Questions <-> Communication, Iteration
+x.Study the\nIssues <-> Communication, Iteration
+x.Cohere\nDistill <-> Communication, Iteration
+Develop and Use\nCore Skills<-> Communication, Iteration
+x.Cohere\nDistill -> Outputs
+#+end_src
 * Figures
 
 ** Single Image
@@ -22,3 +85,26 @@ See Figure [[fig:myfig]]
 #+end_center
 
 See Figure [[fig:myfig]]
+
+* Citations
+
+Add these to the headers
+#+begin_src
+_#+bibliography: claymore_counter_atr.bib
+_#+CITE_EXPORT: basic numeric
+#+end_src
+
+Add these to the bottom
+#+begin_src
+_* Bibliography
+#+print_bibliography:
+#+end_src
+
+Use the citation style
+#+begin_src
+[cite/nb:@handle_name]
+#+end_src
+
+See [[https://blog.tecosaur.com/tmio/2021-07-31-citations.html][link]] for more.
+
+Problem with ivy. You can use =org-cite-insert= and then =M-RET=
