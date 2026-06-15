@@ -1,0 +1,34 @@
+* Friday, 06/12/2026
+
+** Weekly Review
+
+This week went well.
+
+Accomplishments:
+
+* Built an Org-Roam demo vault.
+* Established a journaling habit.
+* Improved my Emacs workflow.
+
+** Weekend Goals
+
+*** TODO Review all Org-Roam notes
+
+Verify titles, tags, and backlinks.
+
+*** TODO Learn Org capture templates
+
+Experiment with templates for tasks and notes.
+
+*** TODO Write first blog post
+
+Topic:
+
+"My first week using Org-Roam and Org-Journal."
+
+*** DONE Archive completed tasks
+CLOSED: [2026-06-12 Fri 17:10]
+
+** Reflection
+
+These unfinished TODO items should automatically appear in the next journal entry if task carryover is enabled.

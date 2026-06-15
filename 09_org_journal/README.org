@@ -7,7 +7,29 @@ Org-Journal is an incredibly powerful way to keep your own diary notes. This can
 
 ** Installation
 
-*** TODO Spacemacs
+*** Spacemacs
+
+In Spacemacs, go to =dotspacemacs/layers= > =dotspacemacs-configuration-layers=, and set the =org-enable-org-journal-support= to true =t=. If you have only activated =org= as a base layer, you'll have to create parenthesis. Then reload your configuration file via =SPC f e R=.
+
+#+BEGIN_SRC elisp
+  (defun dotspacemacs/layers ()
+    ...
+    dotspacemacs-configuration-layers
+    '(
+      (org
+       :variables
+       org-enable-org-journal-support t
+       )
+      )
+    ...
+    )
+#+END_SRC
+
+Next, setup the variable =org-journal-dir= to the location of the journal files.
+
+#+BEGIN_SRC elisp
+(setq org-journal-dir "~/path/to/journal/")
+#+END_SRC
 
 *** TODO Doom Emacs
 
@@ -22,7 +44,12 @@ In order to add Org-Journal, you can simply add the =+journal= to the =org= entr
 
 #+end_src
 
-Customization
+Next, setup the variable =org-journal-dir= to the location of the journal files.
+
+#+BEGIN_SRC elisp
+(setq org-journal-dir "~/path/to/journal/")
+#+END_SRC
+
 ** Usage
 
 *** New Entry
@@ -44,4 +71,16 @@ Every time you create a new date in a new day, your last saved tasks will automa
 If you wish to create a scheduled entry, you may run the command below. It will then open a =org-calendar= that you can navigate via =M-{hjkl}= to select your date.
 
   - =org-journal-new-scheduled-entry=
+  - =SPC a o j t= (Spacemacs)
   - =SPC n j J= (Doom Emacs)
+
+** Customization
+
+There are may different ways you can customize it later. Below are some variables you may set:
+
+  - =org-journal-file-format=
+  - =org-journal-date-prefix=
+  - =org-journal-date-format=
+  - Many more...
+
+It's recommended to read some of the documentation on it.
