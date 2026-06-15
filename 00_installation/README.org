@@ -1,0 +1,80 @@
+#+TITLE: Installation
+
+For this tutorial, we will be using Spacemacs as our entry point to using Emacs. Please follow the steps below to get Spacemacs setup for your system.
+
+** TODO Windows
+
+** GNU/Linux
+
+*** Arch Linux
+
+If using an Arch-based distribution, you can just install the =emacs= package. Or you may look through [[https://wiki.archlinux.org/title/Emacs][Arch Wiki's Emacs page]].
+
+
+*** Ubuntu
+
+The following is the best way to install Emacs on an Ubuntu system, taken from [[https://gist.github.com/shanbhardwaj/866f20e98303379ca8bfbe2f0c5b7a87][Shanbhardwaj's Gist]]. (Copied on 2026-06-15). The reason this is used is because a lot of the public repositories have outdated Emacs versions.
+
+#+BEGIN_SRC shell
+# Setting up Emacs in our source directory
+mkdir -p ~/src && cd ~/src
+git clone --depth 1 --branch emacs-30 git://git.savannah.gnu.org/emacs.git
+cd emacs
+git checkout emacs-30
+
+# Enable development libraries and update apt cache
+# for Ubuntu >= 24.04
+sudo sed -i 's/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/ubuntu.sources && apt update
+
+# for ubuntu < 24, uncomment and use the following
+# sudo sed -i 's/# deb-src/deb-src/' /etc/apt/sources.list && apt update
+
+# Install necessary dependencies
+sudo apt build-dep -y emacs \
+  && sudo apt install libtree-sitter-dev
+
+# Generate the configure file
+./autogen.sh
+
+# Configure Emacs with desired options
+# --with-ctags --with-dbus --with-debug --with-mailutils --with-x11 --with-xwidgets
+./configure --with-imagemagick
+
+# Compile with 4 cores
+make -j4 bootstrap
+
+# Verify the version
+./src/emacs --version
+
+# Optionally, test things by launching Emacs without any configuration
+./src/emacs -Q
+
+# When things look good, install Emacs system-wide
+sudo make install
+#+END_SRC
+
+
+** First Startup in Spacemacs
+
+Your first boot up of Spacemacs will yield a few questions. Enter the following answers:
+
+1. What is your preferred editing style? (*v*im, *e*macs, *h*ybrid)
+  - =v= / Vim
+
+2. What distribution of spacemacs would you like to start with? (*s*pacemacs, spacemacs-*b*ase)  
+  - =s= / spacemacs
+
+It will then start to install 126 packages.
+
+** TODO Handling Proxies
+
+If you are dealing with proxies, you may add the following to your configuration file:
+
+#+BEGIN_SRC elisp
+  ; Source - https://stackoverflow.com/a/1595673
+  ; Posted by Trey Jackson
+  ; Retrieved 2026-06-15, License - CC BY-SA 2.5
+
+  (setq url-proxy-services '(("no_proxy" . "work\\.com")
+                             ("http" . "proxy.work.com:911")))
+#+END_SRC

@@ -1,4 +1,4 @@
-title: LaTeX in Org-Mode
+#+TITLE: LaTeX in Org-Mode
 
 ** Install LaTeX Engine
 

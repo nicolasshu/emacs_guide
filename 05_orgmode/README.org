@@ -1,6 +1,6 @@
-* Org Mode
+#+TITLE: Org Mode
 
-** Basics
+** TODO Basics
 *** A Different Markdown
 - Markdown is primarily a formatting language.
 - Org Mode is a formatting language, outlining tool, task manager, literate programming environment, and personal knowledge system.
@@ -200,7 +200,7 @@ Now, you can execute the TBLFM command via:
 
 This shows that you can do quite a lot of "Excel-like" operations on your Org-mode file
 
-** Tasking
+** TODO Tasking
 
 #+begin_src org
 ,** Tasks for Tuesday
@@ -251,7 +251,7 @@ Copy the following to your Org-Mode file
   - =org-todo=
   - =, T T= (Spacemacs)
 
-** Inline Images
+** TODO Inline Images
 
 Add the following to your org file
 
@@ -263,7 +263,7 @@ Next, you can run the following:
   - =org-toggle-inline-images=
   - =, T i= (Spacemacs)
 
-** Inline GIFs
+** TODO Inline GIFs
 
 In order to allow for GIF images to be visualized in org files, you must add the following to your configuration file.
 
@@ -282,5 +282,5 @@ Next, you can run the following:
   - =org-toggle-inline-images=
   - =, T i= (Spacemacs)
 
-** Mermaid / D2 Lang
+** TODO Mermaid / D2 Lang
 In order to run these Mermaid or D2 commands, you need to make sure those tools are available to you first, and make them accessible via your terminal

@@ -22,3 +22,18 @@ Add the following to =dotspacemacs-configuration-layers=, and then reload your S
 #+end_src
 
 This will give you new types of keybindings to your vim keybindings
+
+** Undo Tree
+
+[[./assets/undo-tree.png]]
+
+As a *temporary* install, let's run the following command:
+
+  - =M-x package-install undo-tree RET=
+
+Now, edit a file, and do a few undos (Under Vim keybindings, you can use =u= and use =C-r= to redo). Then, you can activate the =undo-tree-mode= by running the following in order:
+
+  - =M-x undo-tree-mode=
+  - =undo-tree-visualize= / =C-x u=
+
+Now you can navigate through an undo tree to see previous changes.

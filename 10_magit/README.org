@@ -1,5 +1,22 @@
 #+TITLE: Magit
 
+** Installation
+
+*** Spacemacs
+
+Under =dotspacemacs/layers= > =dotspacemacs-configuration-layers=, add =git= layer
+
+#+BEGIN_SRC elisp
+(defun dotspacemacs/layers ()
+  ...
+  dotspacemacs-configuration-layers
+  '(
+    git
+    )
+  ...
+  )
+#+END_SRC
+
 ** TODO Clone a repository
 ** Staging Files
 

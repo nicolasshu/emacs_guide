@@ -1,7 +1,7 @@
 #+TITLE: Basics
 
-* Vocabulary
 ** Vocabulary
+*** Vocabulary
 Let's establish some vocabulary first
 
  - =C=: Control
@@ -11,11 +11,11 @@ Let's establish some vocabulary first
  - Evaluate an expression: =M-:=
  - Running a command: =M-x=
 
-** Windows
+*** Windows
 
 A window is a visual interface that displays different types of buffers. These can be split between different files.
 
-** Buffers
+*** Buffers
 
 Buffers are reproductions of an actual file or a temporary file or simply a message. They are often displayed in windows. They do not need to be visible in order to be opened. You may switch buffers
 
@@ -23,7 +23,9 @@ Buffers are reproductions of an actual file or a temporary file or simply a mess
 - =compleseus-switch-to-buffer=
 - =SPC b b= (Spacemacs)
 
-* Execute Commands
+If you wish to abort, you may either run =C-g= or =ESC=
+
+** Execute Commands
 
 Split window vertical
   - =split-window-right=
@@ -47,12 +49,20 @@ Split window in 4 grid
 
 Resize your window
   - =shrink-window-horizontally=
+  - =SPC w [= (Spacemacs)
   - =C-x {= (Vanilla)
-
   - =enlarge-window-horizontally=
+  - =SPC w ]= (Spacemacs)
   - =C-x }= (Vanilla)
 
-* Create a new file
+Under Spacemacs, it installs the package =winum= by default, which then allows one to jump between different windows by numbered IDs. It can be run using:
+
+  - =winum-select-window-{number}= (e.g. =winum-select-window-4=)
+  - =SPC {number}= / =M-{number}= (e.g. =SPC 4= or =M-4=) (Spacemacs)
+  - =M-m {number}= (e.g. =M-m 4=) (Vanilla)
+
+
+** Create a new file
 
 We can create new files by finding a file. When we "find a file" that does not exist, you end up creating a new file.
 
@@ -69,17 +79,12 @@ In order to save your file, you can run the following command:
 - =save-buffer=
 - =SPC f s=
 - =C-x C-s= (Vanilla)
+- =:w= (using Evil)
 
-* Evil Mode
+** Evil Mode
 
 Emacs is not a text editor. It is a programmable environment with a Lisp interpreter. It also happens to have a text editor in it.
 
 People write Elisp code in forms of functions, operations, and compile them into packages.
 
-Now we will install our first package.
-
-
-TODO: INSERT INSTRUCTIONS ON HOW TO INSTALL EVIL MODE
-
-
-At this point, you should be able to use Vim keybindings in order to edit your files.
+If you entered the same responses showed on the top of this document, you should have =evil= mode set as default. Therefore, at this point, you should be able to use Vim keybindings in order to edit your files.

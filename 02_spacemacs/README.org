@@ -10,9 +10,7 @@ Emacs will usually store your configuration files as well as your packages under
 
 There will be configuration files that you may edit there. For this instructions, we will no longer be using the vanilla Emacs. Instead, we will use something a little bit more accessible: Spacemacs
 
-** Spacemacs
-
-*** Installation
+** Installation of Spacemacs
 
 Go to https://www.spacemacs.org/ and follow the installation steps there
 
@@ -25,7 +23,7 @@ This will install an entire set of configurations and pre-installed packages und
 At your first start, you will be prompted to setup a few of the basic configuration. After you've setup the basic configurations, you will see a new file under your home directory: =$HOME/.spacemacs=
 
 
-*** Spacemacs Dotfile
+** Spacemacs Dotfile
 
 In order to access your Spacemacs dotfile, you may run:
 
@@ -34,7 +32,7 @@ In order to access your Spacemacs dotfile, you may run:
 
 This dotfile is very well documented, but it is also a few hundreds of lines. We will go over some of the more important parts to consider.
 
-**** Installing Packages
+** Installing Packages
 
 Spacemacs is extensible via layers or via packages. Installing packages is the most common way of extending Emacs, which is often agnostic of the flavor of Emacs that you're using. Layers is specific to Spacemacs.
 
@@ -73,19 +71,41 @@ Unfortunately, there are too many packages to be covered over layers. Therefore,
   )
 #+end_src
 
-***** Install a Layer
+*** Install a Layer
 
-Let's add =csv= to the configuration layers, and then open the file =csv_demo.csv=.
+Let's add =csv= to the configuration layers, and then open the file =csv_demo.csv=. In order to reload the configuration after changing the =.spacemacs= file, you may either restart Emacs or reload the Spacemacs dotfile via:
+
+  - =SPC f e R= (Spacemacs)
 
 
-***** Install a Package
+*** Install a Package
 
 Now, let's add =python-black= to the additional packages
 
-Next, open the =black_demo.py= file. As you may see, it is poorly written. So you can run the command =python-black ------= to properly configure the file.
+Next, open the =black_demo.py= file. As you may see, it is poorly written. So you can run the command =python-black-buffer= to properly configure the file. If you do not have the =black= package installed in your operating system, you'll get the following error message:
+
+#+BEGIN_SRC
+Searching for program: No such file or directory, black
+#+END_SRC
+
+This goes to show that your Emacs will interface with your operating system. In the case you have already some Python environment that has =black= already installed you may either add the environment's =bin= directory to Emacs' PATH variable:
+
+#+BEGIN_SRC elisp
+(setenv "PATH"
+        (concat "/home/username/anaconda3/bin:"
+                (getenv "PATH")))
+
+(add-to-list 'exec-path "/home/username/anaconda3/bin")
+#+END_SRC
+
+Or you may set =python-black= to use the full path
+
+#+BEGIN_SRC elisp
+(setq python-black-command "/home/username/anaconda3/bin/black")
+#+END_SRC
 
 
-**** Configurations
+** Configurations
 
 You may add packages, but their default configuration may not be to your liking. All of your additional configurations can go under
 
@@ -115,3 +135,5 @@ Let's add the following configurations to the =user-config=.
 ;; Wrap Lines
 (add-hook 'text-mode-hook 'visual-line-mode)
 #+end_src
+
+At this point, you'll see the =csv_demo.csv= file better formatted, and a few simple aspects of your text editor experience may be better personality.
