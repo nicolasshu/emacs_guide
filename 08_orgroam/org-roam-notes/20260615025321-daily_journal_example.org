@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       0bfe3f52-6fcc-419f-af16-627bce7782ff
+:END:
+#+title: Daily Journal Example
+#+FILETAGS: :journal:
+
+* 2026-06-15
+
+Today's accomplishments:
+
+* Finished website wireframe.
+* Read 20 pages of Deep Work.
+* Organized notes.
+
+Referenced:
+
+* [[id:0cbbc91c-397a-49d7-b333-74892181ad28][Personal Website Redesign]]
+* [[id:57573333-5673-4781-9041-2e04498945ef][Deep Work]]
+

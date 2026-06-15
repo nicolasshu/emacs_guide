@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       ab792fd6-da2e-49e9-a5a2-1a52d29c29bb
+:END:
+#+title: Productivity System
+
+#+FILETAGS: :system:
+
+* Purpose
+
+This is my overall productivity system.
+
+It combines:
+
+* [[id:0cbbc91c-397a-49d7-b333-74892181ad28][Personal Website Redesign]]
+* [[id:b91d38c8-9be2-426e-970e-aa70e0b0e2f1][Weekly Review Habit]]
+* [[id:57573333-5673-4781-9041-2e04498945ef][Deep Work]]
+
+Questions:
+
+* What should I work on next?
+* What projects are active?

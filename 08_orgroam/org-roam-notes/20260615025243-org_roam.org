@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       5813196e-fb01-408b-9df5-592bf9aff1d2
+:END:
+#+title: Org-Roam
+#+FILETAGS: :tool:
+
+* What it is
+
+A knowledge management system built on Org mode.
+
+Uses:
+
+* Linked notes
+* Backlinks
+* Graph visualization
+
+Related:
+
+* [[id:5b675512-fa23-4c2c-9efb-889922c587c8][Learning Emacs]]
+* [[id:ab792fd6-da2e-49e9-a5a2-1a52d29c29bb][Productivity System]]

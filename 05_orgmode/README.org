@@ -1,6 +1,36 @@
 #+TITLE: Org Mode
 
-** TODO Basics
+** Installation
+*** Spacemacs
+Under =dotspacemacs/layers= > =dotspacemacs-configuration-layers=, add =org= layer, then reload your configuration file via =SPC f e R=.
+
+#+BEGIN_SRC elisp
+(defun dotspacemacs/layers ()
+  ...
+  dotspacemacs-configuration-layers
+  '(
+    org
+    )
+  ...
+  )
+#+END_SRC
+
+*** Doom Emacs
+
+Under your =$DOOM/init.el=, make sure to add =org= to the =(doom! ...)= configuration
+
+#+BEGIN_SRC elisp
+(doom!
+    ...
+    :lang
+    org
+    ...
+    )
+#+END_SRC
+
+Then, run =doom sync= to apply the changes to your Doom configuration
+
+** Basics
 *** A Different Markdown
 - Markdown is primarily a formatting language.
 - Org Mode is a formatting language, outlining tool, task manager, literate programming environment, and personal knowledge system.
@@ -84,6 +114,7 @@ Add the following to your Org file.
 After so, open up a new line
   - =evil-org-open-below=
   - =o= (Spacemacs)
+  - =TAB=
 
 Next, add a city name like Coruscant, and press =TAB= to jump to the next cell.
 
@@ -169,7 +200,6 @@ Now, let's add two new rows to the end, being the average:
 | Malachor  |             1 |     3000 | 4.500e+09 |
 |-----------+---------------+----------+-----------|
 | Average   |               |          |           |
-| Std. Dev  |               |          |           |
  #+end_src
 
 
@@ -200,7 +230,7 @@ Now, you can execute the TBLFM command via:
 
 This shows that you can do quite a lot of "Excel-like" operations on your Org-mode file
 
-** TODO Tasking
+** Tasking
 
 #+begin_src org
 ,** Tasks for Tuesday
@@ -251,7 +281,7 @@ Copy the following to your Org-Mode file
   - =org-todo=
   - =, T T= (Spacemacs)
 
-** TODO Inline Images
+** Inline Images
 
 Add the following to your org file
 
@@ -263,7 +293,7 @@ Next, you can run the following:
   - =org-toggle-inline-images=
   - =, T i= (Spacemacs)
 
-** TODO Inline GIFs
+** Inline GIFs
 
 In order to allow for GIF images to be visualized in org files, you must add the following to your configuration file.
 

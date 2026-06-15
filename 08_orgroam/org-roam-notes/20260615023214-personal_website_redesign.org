@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       0cbbc91c-397a-49d7-b333-74892181ad28
+:END:
+#+title: Personal Website Redesign
+#+FILETAGS: :project:
+
+* Goal
+
+Redesign my personal website.
+
+** Tasks
+
+* [ ] Choose a theme
+* [ ] Write About page
+* [ ] Add portfolio section
+
+** Related
+
+* [[id:6d1d7c90-d975-4ae1-af22-e41658a94d36][Meeting with Alice]]
+* [[id:c3529686-297a-4cbc-b577-85def4124a0e][Deep Work (book)]]

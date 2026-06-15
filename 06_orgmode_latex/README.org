@@ -1,10 +1,13 @@
 #+TITLE: LaTeX in Org-Mode
 
-** Install LaTeX Engine
+** TODO Install LaTeX Engine
 
-** Make LaTeX Accessible by Emacs
+*** GNU/Linux
+*** Windows
 
-** Using LaTeX within Org Mode
+** TODO Make LaTeX Accessible by Emacs
+
+** TODO Using LaTeX within Org Mode
 
 Once you have the necessary tooling, you can start to simply write LaTeX as if you were writing any LaTeX document.
 
@@ -14,7 +17,7 @@ $$X(i\omega ) = \frac{1}{\sqrt{2\pi}} \int ^ \infty _\infty x(t) \cdot e^{i 2\pi
 
 where $i$ is the imaginary number, $t$ is the time variable, and $\omega$ is the inverse-time variable. Above, we've shown the equation showing as a line equation, and in this paragraph, we've shown in-line equations.
 
-** Exporting to PDF via LaTeX
+** TODO Exporting to PDF via LaTeX
 
 If you have an org file that you are interested in submitting as an official document, you can treat it as such and export it via LaTeX. Ideally, you'll want to have at least a title for your document. This can be achieved by adding this to the top:
 

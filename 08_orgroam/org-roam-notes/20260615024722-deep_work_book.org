@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       c3529686-297a-4cbc-b577-85def4124a0e
+:END:
+#+title: Deep Work (book)
+#+FILETAGS: :book:
+
+* Notes
+
+Author: Cal Newport
+
+Key ideas:
+
+* Eliminate distractions.
+* Schedule focused blocks.
+* Protect your attention.
+
+Related:
+
+* [[id:57573333-5673-4781-9041-2e04498945ef][Deep Work]]
+* [[id:0cbbc91c-397a-49d7-b333-74892181ad28][Personal Website Redesign]]

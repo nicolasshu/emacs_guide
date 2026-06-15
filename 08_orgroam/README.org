@@ -1,8 +1,5 @@
 #+TITLE: Org-Roam
 
-** Things to Do
-*** TODO Create some files
-
 ** Zettelkasten
 
 Zettelkasten is a knowledge management system aimed to help people store lots of referenced informations. It consists of lot of small items of informations stored in paper slips or cards that link to each other via an organized method of headings or tags.
@@ -13,12 +10,34 @@ When you extend it, you end up getting something like an extensive knowledge man
 
 ** Installation
 
-TODO
+In Spacemacs, go to =dotspacemacs/layers= > =dotspacemacs-configuration-layers=, and set the =org-enable-roam-support= to true =t=. If you have only activated =org= as a base layer, you'll have to create parenthesis. Then reload your configuration file via =SPC f e R=.
 
-In order to setup org-roam, you'll need to setup a few variables:
+#+BEGIN_SRC elisp
+  (defun dotspacemacs/layers ()
+    ...
+    dotspacemacs-configuration-layers
+    '(
+      (org
+       :variables
+       org-enable-roam-support t
+       )
+      )
+    ...
+    )
+#+END_SRC
+
+In order to setup org-roam, you'll need to setup a few variables, and then reload your configuration with =SPC f e R=
 
 #+begin_src elisp
-(org-roam-directory (file-truename "~/path/to/org-roam-notes"))
+  ;; Setup where the Org-Roam notes will be located
+  ;;     Make sure to change it to the location "$REPO/08_orgroam/org-roam-notes"
+  (setq org-roam-directory (file-truename "~/path/to/org-roam-notes"))
+
+  ;; Make sure that the org-roam database is being updated
+  (use-package org-roam
+    :config
+    (org-roam-db-autosync-mode))
+  )
 #+end_src
 
 ** Usage
@@ -76,9 +95,26 @@ One of the beauties regarding Org-Roam is that the entire schema is stored in th
 
 ** Org-Roam-UI
 
-TODO
+In Spacemacs, make sure that the variable =org-enable-roam-support= is set to =t=.
 
-In order to use Org-Roam-UI, you can simply activate its mode via =M-x org-roam-ui-mode= and it will be launched under http://127.0.0.1:35901.
+#+BEGIN_SRC elisp
+  (defun dotspacemacs/layers ()
+    ...
+    dotspacemacs-configuration-layers
+    '(
+      (org
+       :variables
+       org-enable-roam-support t
+       org-enable-roam-ui t
+       )
+      )
+    ...
+    )
+#+END_SRC
+
+In order to use Org-Roam-UI, you can simply activate its mode via =M-x org-roam-ui-open= and it will be launched under http://127.0.0.1:35901.
+
+[[./assets/org-roam-ui.png]]
 
 ** More Customization
 

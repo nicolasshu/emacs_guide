@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       57573333-5673-4781-9041-2e04498945ef
+:END:
+#+title: Deep Work
+#+FILETAGS: :concept:
+
+* Definition
+
+Deep work = focused, distraction-free concentration.
+
+Benefits:
+
+* Better learning
+* Higher quality output
+* Faster progress
+
+See also:
+
+* [[id:b91d38c8-9be2-426e-970e-aa70e0b0e2f1][Weekly Review Habit]]
+* [[id:c3529686-297a-4cbc-b577-85def4124a0e][Deep Work (book)]]
+

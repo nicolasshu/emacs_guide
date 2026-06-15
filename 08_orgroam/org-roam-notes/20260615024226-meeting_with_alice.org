@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       6d1d7c90-d975-4ae1-af22-e41658a94d36
+:END:
+#+title: Meeting with Alice
+#+FILETAGS: :meeting:
+
+* Notes
+
+Date: 2026-06-15
+
+Alice suggested:
+
+* Simplify the homepage.
+* Add a projects section.
+* Write shorter blog posts.
+
+Related:
+
+* [[id:0cbbc91c-397a-49d7-b333-74892181ad28][Personal Website Redesign]]
+* [[id:7fc4b10b-8b8b-4c64-9cff-316187b4926e][Alice Johnson]]
+

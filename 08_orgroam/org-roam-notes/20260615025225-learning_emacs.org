@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       5b675512-fa23-4c2c-9efb-889922c587c8
+:END:
+#+title: Learning Emacs
+#+FILETAGS: :topic:
+
+* Resources
+
+Current topics:
+
+* Org mode
+* Org-Roam
+* Magit
+
+See:
+
+* [[id:5813196e-fb01-408b-9df5-592bf9aff1d2][Org-Roam]]

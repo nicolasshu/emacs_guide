@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       b91d38c8-9be2-426e-970e-aa70e0b0e2f1
+:END:
+#+title: Weekly Review Habit
+#+FILETAGS: :habit:
+
+* Checklist
+
+Every Friday:
+
+* [ ] Review projects
+* [ ] Archive completed tasks
+* [ ] Plan next week
+
+Related:
+
+* [[id:ab792fd6-da2e-49e9-a5a2-1a52d29c29bb][Productivity System]]
+
