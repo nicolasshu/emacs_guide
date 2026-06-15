@@ -1,17 +1,18 @@
-#+TITLE: Tangling
-* Introduction
-** What is Literate Programming
+#+TITLE: Literate Programming
+** Introduction
+*** What is Literate Programming
 
 Literate programming is the practice of bringing documentation (often in Markup language) and code to the same medium, such that they are often intertwined with each other. Although Donald Knuth pioneered this via WEB when combining Pascal and TeX, in present day, most people have become more familiar with it with Jupyter Notebooks, which brings Python code with JSON stringing which renders Markdown, which was introduced around 2014-2015. Org-Mode has been doing this since 2011 via the Babel package to tangle their files.
 
-** Write description of what is tangling
+*** Write description of what is tangling
 
 In literate programming, tangling is the act of generating compilable code from a literate program.
 
-* Usage
+** Installation
+** Usage
 You may use =org-babel-tangle= (=C-c C-v t= or =, b t= in Spacemacs) in order to export your code blocks into a file. There are two ways to do so:
 
-** Export Selected Blocks into Same File
+*** Export Selected Blocks into Same File
 Assume you are working on a file names =filename.org=. In order to export all of the same type blocks into a single file =filename.ext=, you may add the arguments =:tangle yes= to each of the code blocks you wish to output. For example:
 
 #+begin_src org
@@ -25,7 +26,7 @@ Note that if you have multiple types of codeblocks, for example a Javascript, a 
   - =filename.py=
   - =filename.el=
 
-** Export Some Blocks to a Specific File
+*** Export Some Blocks to a Specific File
 Frankly, the best way to do so is to add the following to the top of your file
 
 #+begin_src org
@@ -38,7 +39,7 @@ and every time you don't want to tangle a code block, to add =:tangle no=.
 I haven't found a better way to do so.
 #+end_quote
 
-** Export Every Block into a File
+*** Export Every Block into a File
 
 You are able to export every block with some signature into a file, and that way, you don't have to declare =:tangle yes= at every selected code block. This can be achieved by adding the property of tangling given some =header-args=. As an example, we'll have the following org mode file:
 
@@ -73,7 +74,7 @@ set $left j
 set $right semicolon
 #+end_src
 
-** Export Individual Blocks into Separate Files
+*** Export Individual Blocks into Separate Files
 In order to set individual code blocks to be tangled into specific files, add the argument =:tangle filename.ext= to the code block definition. For example:
 
 #+begin_src org

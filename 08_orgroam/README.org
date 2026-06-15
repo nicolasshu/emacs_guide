@@ -1,6 +1,9 @@
 #+TITLE: Org-Roam
 
-* Zettelkasten
+** Things to Do
+*** TODO Create some files
+
+** Zettelkasten
 
 Zettelkasten is a knowledge management system aimed to help people store lots of referenced informations. It consists of lot of small items of informations stored in paper slips or cards that link to each other via an organized method of headings or tags.
 
@@ -8,7 +11,7 @@ Zettelkasten is a knowledge management system aimed to help people store lots of
 
 When you extend it, you end up getting something like an extensive knowledge management system like Wikipedia.
 
-* Installation
+** Installation
 
 TODO
 
@@ -18,14 +21,14 @@ In order to setup org-roam, you'll need to setup a few variables:
 (org-roam-directory (file-truename "~/path/to/org-roam-notes"))
 #+end_src
 
-* Usage
+** Usage
 
 In Org-Roam, the main things you'll need are to:
 
   - open/create a file
   - insert a note elsewhere
 
-    
+
 Under Spacemacs, you can find a plethora of other options relating Org-Roam via =SPC a o r=.
 
 #+begin_src org
@@ -67,17 +70,17 @@ When you create a new node, you may find something like this:
 
 The =PROPERTIES= > =ID= is automatically generated for our convenience. This is what identifies the node, but also what enables unique links to create connections throughout an entire network of nodes.
 
-** Reproducibility
+*** Reproducibility
 
 One of the beauties regarding Org-Roam is that the entire schema is stored in the files themselves, and that it is reproducible. Everything is stored in a flat-file structure. This means that if your OS gets destroyed or if you wish to move your notes elsewhere, as long as you bring these files, you can reproduce your entire Org-Roam notes simply from your file structure.
 
-* Org-Roam-UI
+** Org-Roam-UI
 
 TODO
 
 In order to use Org-Roam-UI, you can simply activate its mode via =M-x org-roam-ui-mode= and it will be launched under http://127.0.0.1:35901.
 
-* More Customization
+** More Customization
 
 If you wish to create new types of emplates, you can add the Elisp below.
 

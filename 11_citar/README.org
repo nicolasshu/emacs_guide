@@ -1,5 +1,5 @@
 #+TITLE: Citation Management
-* Citar
+** Citar
 
 Citar is a citation management. I, as Nick Shu, have tried multiple types of citation managers. The ones I've had greatest successes with were Mendeley, Zotero, and even Papis, but I've always found problems with each of them.
 
@@ -11,21 +11,21 @@ Papis is absolutely great. It is a TUI, and actually great for its expandability
 
 I personally found that Citar is the best solution that I've found to this day. I absolutely love how it integrates with Org files, how you can pull files directly from URLs and how you can create individual notes for each of the publications.
 
-* Tasks
-** TODO Create multiple bib files
-** TODO Add 3 resources to you the bib entries
-** TODO Add a list of 3 URLs for the bib entries
-* Installation
+** Tasks
+*** TODO Create multiple bib files
+*** TODO Add 3 resources to you the bib entries
+*** TODO Add a list of 3 URLs for the bib entries
+** Installation
 
 Install citar
 Install arxiv
 
-** TODO Steps [0/3]
+*** TODO Steps [0/2]
 - [ ] Create a directory for papers
 - [ ] Create a directory for notes
-* Usage
+** Usage
 
-** Navigating Citar
+*** Navigating Citar
 
 Once you have your system setup, you can open Citar via
 
@@ -37,7 +37,7 @@ The entries will show whether you have a local PDF file, whether you have the UR
 At this point, you may start typing keywords that may be in the title or the authors, or anything exposed by the =.bib= files.
 
 
-** Add Your Resources
+*** Add Your Resources
 
 Your =.bib= files will act as the central place for list of publications you wish to save. That does not mean that you will have the actual resources themselves. So, at this point, let's add a resource file. Run the command:
 
@@ -56,7 +56,7 @@ You will see a list of all of your bib entries. Once you've selected your entry,
 
 TODO: Now, select a resource you are interested in and add your resources
 
-** Add Notes
+*** Add Notes
 
 Now, you will add notes to your resource. We will again run the following command:
 

@@ -1,16 +1,15 @@
 #+TITLE: Org-Journal
 
 
-* Org-Journal
+** Introduction
 
 Org-Journal is an incredibly powerful way to keep your own diary notes. This can be used for personal reasons, but also for work reasons. Like Org-Roam, the entire system is stored in flat files, and can easily be recovered by simply having those files.
 
+** Installation
 
-* Installation
+*** TODO Spacemacs
 
-** TODO Spacemacs
-
-** TODO Doom Emacs
+*** TODO Doom Emacs
 
 In order to add Org-Journal, you can simply add the =+journal= to the =org= entry in your =init.el= file.
 
@@ -24,9 +23,9 @@ In order to add Org-Journal, you can simply add the =+journal= to the =org= entr
 #+end_src
 
 Customization
-* Usage
+** Usage
 
-** New Entry
+*** New Entry
 
 In order to add a new automatically set entry for today and now, you can run the following command:
 
@@ -40,7 +39,7 @@ This will do the following:
 
 Every time you create a new date in a new day, your last saved tasks will automatically move to the new note. This becomes extremely useful to move your forgotten tasks forward.
 
-** Scheduled Entry
+*** Scheduled Entry
 
 If you wish to create a scheduled entry, you may run the command below. It will then open a =org-calendar= that you can navigate via =M-{hjkl}= to select your date.
 

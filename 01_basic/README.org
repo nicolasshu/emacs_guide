@@ -2,13 +2,14 @@
 
 * Vocabulary
 ** Vocabulary
-=C=: Control
-   E.g. =C-x C-e= means =Ctrl+X (then) Ctrl+E=
-=M=: Meta key, usually =Alt=
-   E.g. =M-:= means =Alt+Shift+;=
+Let's establish some vocabulary first
 
-Evaluate an expression: =M-:=
-Running a command: =M-x=
+ - =C=: Control
+   - E.g. =C-x C-e= means =Ctrl+X (then) Ctrl+E=
+ - =M=: Meta key, usually =Alt=
+   - E.g. =M-:= means =Alt+Shift+;=
+ - Evaluate an expression: =M-:=
+ - Running a command: =M-x=
 
 ** Windows
 

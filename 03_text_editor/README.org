@@ -1,6 +1,6 @@
 #+TITLE: Text Editor
 
-* Treemacs
+** Treemacs
 
 Add the following to =dotspacemacs-configuration-layers=, and then reload your Spacemacs configuration =SPC f e R=
 
@@ -11,7 +11,7 @@ treemacs
 Open a file in your system via =find-file= / =SPC f f=. Next, run the command =treemacs= / =SPC f t=
 
 
-* Evil Mode
+** Evil Mode
 
 Add the following to =dotspacemacs-configuration-layers=, and then reload your Spacemacs configuration =SPC f e R=
 

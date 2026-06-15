@@ -1,16 +1,16 @@
 #+TITLE: Dired
 
-* Navigate
+** Navigate
 
 You may use your regular navigation keybindings to navigate around. You can use =-= to go up in the directory level
 
-* Create a new directory
+** Create a new directory
 
 In order to create a new directory, run the function =dired-create-directory=
   - =M-x dired-create-directory=
   - =+= (Spacemacs)
 
-* Rename Multiple Files
+** Rename Multiple Files
 
 Here, you'll learn to use Dired to rename multiple files
 
