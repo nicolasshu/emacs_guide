@@ -2,7 +2,53 @@
 
 For this tutorial, we will be using Spacemacs as our entry point to using Emacs. Please follow the steps below to get Spacemacs setup for your system.
 
-** TODO Windows
+** Windows
+
+*** Get the Installer
+
+If you use Chocolatey, you may install it via
+
+#+BEGIN_SRC shell
+choco install emacs
+#+END_SRC
+
+Otherwise, the easiest method is to go to the [[https://www.gnu.org/software/emacs/download.html][GNU Emacs Download page]] and get to the file server for a [[http://ftpmirror.gnu.org/emacs/windows][nearby GNU mirror]]. You may choose any version. For this guide, select =emacs-30/= and then select =emacs-30.2.installer.exe=. Next, run the installer.
+
+  - Click on =Next >=, then read their copyleft license, click on =OK=. 
+  - Next, choose a destination folder. You may leave it at =C:\Program Files\Emacs=.
+  - Next, you may create a Start Menu folder.
+  - Once ready, click on =Install=
+
+*** Setting Up Dotfiles
+
+Unix systems often use dotfiles for their configuration. If you use a tiling window manager, you're likely extremely familiar with this concept. Dotfiles are effectively ASCII files that have text configurations for an application or for an entire system. It therefore becomes very easy to edit simple files and change entire configurations without having to go through setting dialogs.
+
+By default, Emacs on Windows looks for configurations in the =%AppData%= directory (i.e., =C:\Users\USERNAME\AppData\Roaming=). This can be changed by setting an explicit =HOME= environment variable, which results in GNU Emacs to look in that location instead, which matches with Unix behaviors.
+
+  - Run the command (i.e., =Win+R=) =sysdm.cpl=
+  - Open the =Advanced= tab
+  - Click on the =Environment Variables...= button
+  - Under the =Environment Variables= window and under the =User variables for USERNAME=, click on =New...= button
+  - Under =New User Variable= window, enter the following values:
+    + Variable name: =HOME=
+    + Variable value: =C:\Users\USERNAME=
+  - Click on =OK= to close the =New User Variable=, =OK= to close the =Environment Variables=, then =OK= to close the =System Properties= window.
+
+Clean up any previous existing configuration directories by removing =.emacs.d= and =.emacs= from the =C:\Users\USERNAME= directory (i.e., =$env:USERPROFILE= in PowerShell or =%USERPROFILE%= in Command Prompt).
+
+*** Installing Spacemacs
+
+Now that the configuration directory is cleared, bring in the default configurations from Spacemacs
+
+#+BEGIN_SRC shell
+# In PowerShell
+git clone https://github.com/syl20bnr/spacemacs $env:USERPROFILE/.emacs.d
+
+# In Command Prompt
+git clone https://github.com/syl20bnr/spacemacs %USERPROFILE%/.emacs.d
+#+END_SRC
+
+At this point, Spacemacs will be Installed. 
 
 ** GNU/Linux
 
@@ -64,17 +110,22 @@ Your first boot up of Spacemacs will yield a few questions. Enter the following 
 2. What distribution of spacemacs would you like to start with? (*s*pacemacs, spacemacs-*b*ase)  
   - =s= / spacemacs
 
-It will then start to install 126 packages.
+Depending on your system, it may try to install 126 packages and may struggle. If the system may be dealing with proxies, see below:
 
-** TODO Handling Proxies
+** Handling Proxies
 
-If you are dealing with proxies, you may add the following to your configuration file:
+It is possible that your system may exist behind a proxy. For that, edit the file =C:\Users\USERNAME\.spacemacs=, go to line 84, and inside the =dotspacemacs/init= function, add the following (according to your organization):
 
 #+BEGIN_SRC elisp
-  ; Source - https://stackoverflow.com/a/1595673
-  ; Posted by Trey Jackson
-  ; Retrieved 2026-06-15, License - CC BY-SA 2.5
-
-  (setq url-proxy-services '(("no_proxy" . "work\\.com")
-                             ("http" . "proxy.work.com:911")))
+(defun dotspacemacs/init ()
+  ;; Add proxies
+  (setq url-proxy-services
+    '(("http" . "proxy.lan.organization.com:8080")
+      ("https" . "proxy.lan.organization.com:8080")
+    )
+  )
+  ...
+)
 #+END_SRC
+
+This will enable GNU Emacs to fetch all of its default packages.
