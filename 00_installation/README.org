@@ -2,6 +2,7 @@
 
 For this tutorial, we will be using Spacemacs as our entry point to using Emacs. Please follow the steps below to get Spacemacs setup for your system.
 
+* Emacs
 ** Windows
 
 *** Get the Installer
@@ -129,3 +130,60 @@ It is possible that your system may exist behind a proxy. For that, edit the fil
 #+END_SRC
 
 This will enable GNU Emacs to fetch all of its default packages.
+
+* LaTeX (Optional for Lesson 6)
+
+** Windows
+
+There are a few requirements that will likely help your process first. Given that LaTeX is an incredibly mature document generation software, it's recommended to install LaTeX first.
+
+You may use [[https://miktex.org/][MiKTeX]] or the TeX Users Group's [[https://www.tug.org/texlive/][TeXLive]] to install the LaTeX binaries.
+
+#+BEGIN_QUOTE
+MiKTeX will be significantly faster to install than TeXLive because MiKTeX installs only the basic LaTeX functionality.
+#+END_QUOTE
+
+*** Option 1: Install TeXLive
+
+Obtain the installer file from this [[https://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe][link]] or follow the steps below:
+  - Visit the [[https://www.tug.org/texlive/][TeXLive website]], and click on =install on Windows= link to obtain the installer.
+  - In the next link, look for =Easy install= and download the =install-tl-windows.exe= file.
+
+Open the installer file and select =Install= and click on =Next= and then =Install=.
+
+[[./assets/images/pandoc_in_windows/texlive_installer_01.png]]
+
+After it's done unpacking, it will ask you to choose a mirror. Choose the mirror that is closest to you. Do NOT close the first window. Keep it opened.
+
+[[./assets/images/pandoc_in_windows/texlive_installer_02.png]]
+
+Next, choose whichever Installation root you prefer, and, for United States, choose the =Default paper size= to be =Letter=. Then click =Install=.
+
+*** Option 2: Install MiKTeX
+
+Visit the [[https://miktex.org/][MiKTeX website]] and click on =Download= on the top. Next, select your operating system, and download the installer.
+
+Follow the instructions to install MiKTeX.
+
+** GNU/Linux
+
+*** Arch Linux
+If you're using Arch, you know the drill; RTFM
+
+https://wiki.archlinux.org/title/TeX_Live
+
+*** Ubuntu
+
+If you're using ubuntu, you may use any of the following TeX Live options:
+
+#+begin_src shell
+# Basic install
+sudo apt install texlive
+
+# Recommended extra
+sudo apt install texlive-latex-extra
+
+# Full install
+sudo apt install texlive-full
+#+end_src
+
