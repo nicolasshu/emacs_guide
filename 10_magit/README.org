@@ -33,7 +33,14 @@ Under your =$DOOM/init.el=, make sure to add =magit= to the =(doom! ...)= config
 Then, run =doom sync= to apply the changes to your Doom configuration
 
 
-** TODO Clone a repository
+** Clone a repository
+In order to clone a repository, you may use the command
+
+  - =magit-clone=
+  - =SPC g c= (Spacemacs)
+
+At that point, you may follow the directions to clone your repository. Note that, if you already have a link in your clipboard and you wish to paste it onto the minibuffer, then you can use =C-y=, which is the command the yank (i.e. paste your copied content from your clipboard)
+
 ** Staging Files
 
 In order to really get into Magit, you need to run:
