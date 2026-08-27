@@ -15,6 +15,32 @@ Under =dotspacemacs/layers= > =dotspacemacs-configuration-layers=, add =org= lay
   )
 #+END_SRC
 
+In order to add specific settings to a layer (e.g. =org=), you may create a compounded object. E.g.,
+
+#+BEGIN_SRC elisp
+  (defun dotspacemacs/layers ()
+    ...
+    dotspacemacs-configuration-layers
+    '(
+      (org :packages
+           :variables
+           org-startup-indented t
+           ;; ORG-ROAM
+           org-enable-roam-support t
+           org-enable-roam-ui  t
+           ;; ORG-AGENDA
+           org-agenda-files (directory-files-recursively "~/sync/agenda" "\\.org$")
+           org-todo-keywords '((sequence "TODO(t)" "PROJ(p)" "LEARN(l)" "|" "HOLD(h)" "DONE(d)"))
+           ;; ORG-JOURNAL
+           org-enable-org-journal-support t
+           org-journal-dir "~/sync/meetings/"
+           org-journal-date-format "%a, %Y-%m-%d"
+           )
+      )
+    ...
+    )
+#+END_SRC
+
 Additionally, and /optionally/, also add =org-tempo= to your =user-config=.
 
 #+begin_src elisp
@@ -60,6 +86,14 @@ You can collapse and expand sections interactively inside Emacs by pressing =TAB
 #+begin_src org
 Like in Markdown, you can have [[https://google.com][links]]. You can also have texts in /italics/, *bolded*, _underlined_, with ~strikethroughs~, in =verbatim=, and in ~code style~.
 #+end_src
+
+You have the option to hide the emphasis markers. This can be done by setting up the following variable:
+
+
+#+begin_src elisp
+org-hide-emphasis-markers t
+#+end_src
+
 
 A lot of their code blocks are represented slightly different, in a way that resembles LaTeX.
 

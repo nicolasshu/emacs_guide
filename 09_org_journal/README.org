@@ -84,3 +84,64 @@ There are may different ways you can customize it later. Below are some variable
   - Many more...
 
 It's recommended to read some of the documentation on it.
+
+** Appendix
+
+*** File Naming Format
+
+In addition to saving the files on =org-journal-dir=, you may wish to save the files in a specific format. You may set it as:
+
+#+begin_src elisp
+org-journal-file-format "%Y-%m-%d.org"
+#+end_src
+
+For example, on Spacemacs, you may set it via:
+
+#+begin_src elisp
+  dotspacemacs-configuration-layers
+  '(
+    (org :variables
+         org-journal-dir "/path/to/journal"
+         org-journal-file-format "%Y-%m-%d.org"
+    )
+#+end_src
+
+
+*** Date Format
+
+Within the org file itself, you may wish to setup the header of the section which represents the date to show in a specific format. Therefore, you may set it via the format below (as an example) to yield "Monday, 2022-02-31"
+
+#+begin_src elisp
+org-journal-date-format "%a, %Y-%m-%d"
+#+end_src
+
+For example, on Spacemacs, you may set it via:
+
+#+begin_src elisp
+  dotspacemacs-configuration-layers
+  '(
+    (org :variables
+         org-journal-dir "/path/to/journal"
+         org-journal-date-format "%a, %Y-%m-%d"
+    )
+#+end_src
+*** LaTeX Header
+
+If you know you will want your Org-Journal files to have specific settings for LaTeX exporting, you may edit the =org-journal-file-header=. This may be set via:
+
+#+begin_src elisp
+org-journal-file-header "#+LATEX_HEADER: \\usepackage[margin=0.5in]{geometry}\n#+LATEX_HEADER: \\usepackage{bm}\n" ;; For more styles, run $ pygmentize -L styles
+#+end_src
+
+As an example, you may add:
+
+#+begin_src elisp
+  dotspacemacs-configuration-layers
+  '(
+    (org :variables
+         org-journal-dir "/path/to/journal"
+         org-journal-file-header "#+LATEX_HEADER: \\usepackage[margin=0.5in]{geometry}\n#+LATEX_HEADER: \\usepackage{bm}\n#+LATEX_HEADER: \\usepackage{minted}\n#+LATEX_HEADER: \\usemintedstyle{emacs}\n#+LATEX_HEADER: \\usepackage[ttscale=0.7]{libertine}\n#+LATEX_HEADER: \\usepackage{tcolorbox}\n#+LATEX_HEADER: \\usepackage{xcolor}\n#+LATEX_HEADER: \\newtcolorbox[auto counter, number within=section]{fancyquotes}[1][]{colframe=white!80!black, colback=black!20, boxrule=0.5mm, #1}\n#+LATEX_HEADER: \\usepackage[inkscapelatex=false]{svg}\n#+LATEX_HEADER: \\usepackage{colortbl}\n#+LATEX_HEADER: \\newcommand{\\cc}[1]{\\cellcolor{#1}}\n" ;; For more styles, run $ pygmentize -L styles
+    )
+#+end_src
+
+Note: The example above may require more setup on your own operating system.
