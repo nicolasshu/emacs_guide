@@ -15,6 +15,16 @@ Under =dotspacemacs/layers= > =dotspacemacs-configuration-layers=, add =org= lay
   )
 #+END_SRC
 
+Additionally, and /optionally/, also add =org-tempo= to your =user-config=.
+
+#+begin_src elisp
+(defun dotspacemacs/user-config ()
+  (require 'org-tempo)
+  )
+#+end_src
+
+Org-tempo will prove you with a few structure templates when writing snippets. For example, by typing =<s TAB=, will create a code block. Give it a try! For more information, you may read [[https://orgmode.org/manual/Structure-Templates.html][Structure Templates]].
+
 *** Doom Emacs
 
 Under your =$DOOM/init.el=, make sure to add =org= to the =(doom! ...)= configuration

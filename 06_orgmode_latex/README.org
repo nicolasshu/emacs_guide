@@ -1,0 +1,143 @@
+#+TITLE: LaTeX in Org-Mode
+
+** Installation / Make LaTeX Accessible by Emacs
+
+*** Install LaTeX on your system
+
+Follow the installation steps in lesson 0 to have Emacs
+
+*** Org-Mode in Spacemacs
+
+If you haven't yet, access your =.spacemacs= file (shortcut: =SPC f e d=) and enable the Org layer by going to:
+
+#+BEGIN_SRC elisp
+(defun dotspacemacs/layers ()
+  ...
+  dotspacemacs-configuration-layers
+  '(
+    org
+    )
+  ...
+  )
+#+END_SRC
+
+Then reload your configuration file via =SPC f e R=. This addition will add special functionalities to any Org-mode buffers
+
+
+** Using LaTeX within Org Mode
+
+By default, you may use the function =org-preview-latex= to preview a LaTeX fragment. Place the cursor on the LaTeX section, and run:
+
+- =C-c C-x C-l=
+- =, T x= (Spacemacs)
+
+Once you have the necessary tooling, you can start to simply write LaTeX as if you were writing any LaTeX document.
+
+Below is the math/physics version of the continuous-time Fourier Transform
+
+$$X(i\omega ) = \frac{1}{\sqrt{2\pi}} \int ^ \infty _\infty x(t) \cdot e^{i 2\pi \omega t} dt$$
+
+where $i$ is the imaginary number, $t$ is the time variable, and $\omega$ is the inverse-time variable. Above, we've shown the equation showing as a line equation, and in this paragraph, we've shown in-line equations.
+
+** Exporting to PDF via LaTeX
+
+If you have an org file that you are interested in submitting as an official document, you can treat it as such and export it via LaTeX. Ideally, you'll want to have at least a title for your document. This can be achieved by adding this to the top:
+
+#+begin_src org
+,#+TITLE: Story of My Life
+#+end_src
+
+You can also add specific LaTeX headers to your document. For example:
+
+#+begin_src org
+,#+TITLE: Story of My Life
+,#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+,#+LATEX_HEADER: \usepackage{minted}
+,#+LATEX_HEADER: \usemintedstyle{emacs}
+,#+LATEX_HEADER: \usepackage[ttscale=0.7]{libertine}
+#+end_src
+
+Finally, you can export this file via
+
+  - =org-latex-export-to-pdf=
+
+** Appendix
+
+*** Very Basic Syntax
+
+You may also provide highlighting over the LaTeX on your org-mode files.
+
+#+BEGIN_SRC elisp
+(setq org-highlight-latex-and-related '(latex script))
+#+END_SRC
+
+*** QoL Improvements on LaTeX within Org-Mode
+
+By default, there are a few things that could be improved when using LaTeX on org-mode.
+
+**** Scaling
+
+When you scale your text (=C-x += or =C-x -= to zoom in and out), the LaTeX preview does not scale appropriately. By putting the following in your user configuration, you'll obtain that capability:
+
+#+BEGIN_SRC elisp
+;; Change the overlays of LaTeX previews
+;; Source: https://karthinks.com/software/scaling-latex-previews-in-emacs/
+(defun my/text-scale-adjust-latex-previews ()
+  "Adjust the size of latex preview fragments when changing the buffer's text scale."
+  (pcase major-mode
+    ('latex-mode
+     (dolist (ov (overlays-in (point-min) (point-max)))
+       (if (eq (overlay-get ov 'category)
+               'preview-overlay)
+           (my/text-scale--resize-fragment ov))))
+    ('org-mode
+     (dolist (ov (overlays-in (point-min) (point-max)))
+       (if (eq (overlay-get ov 'org-overlay-type)
+               'org-latex-overlay)
+           (my/text-scale--resize-fragment ov))))))
+(defun my/text-scale--resize-fragment (ov)
+  (overlay-put
+   ov 'display
+   (cons 'image
+         (plist-put
+          (cdr (overlay-get ov 'display))
+          :scale (+ 1.0 (* 0.5 text-scale-mode-amount))))))
+(add-hook 'text-scale-mode-hook #'my/text-scale-adjust-latex-previews)
+#+END_SRC
+
+**** Blurs / LaTeX Previews as SVG
+
+Unfortunately, the LaTeX previews are rendered via lossy images (e.g. JPGs), which may yield blurry previews at times. Instead, you may change it such that the LaTeX previews are shown via vector graphics. By putting the Elisp code below in your user configuration, you can change the LaTeX previews to SVG
+
+#+BEGIN_SRC elisp
+;; Also change the LaTeX previews to SVG
+(setq org-preview-latex-default-process 'dvisvgm) ;No blur when scaling
+
+(eval-after-load 'ox
+  '(add-to-list 'org-preview-latex-process-alist
+                '(svg "dvisvgm %f -n -b min -c 1.2,1.2 -o %o"
+                      preview-latex-as-svg)))
+#+END_SRC
+
+**** Preview all fragments in buffer
+
+You may also create a new function that will attempt to preview ALL of the LaTeX fragments in the current buffer
+
+#+BEGIN_SRC elisp
+(defun org-latex-preview-all ()
+  "Preview all LaTeX fragments in the current Org buffer."
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (while (re-search-forward "$$" nil t)
+      (let ((ov (make-overlay (match-beginning 0) (match-end 0))))
+        (overlay-put ov 'display
+                     (create-image (concat "file://" (org-latex--ltxpng (match-string-no-properties 0) 'dvipng)))
+                     'face 'default
+                     'modification-hooks (list 'org-latex--install-modification-hook)
+                     'keymap org-latex--preview-map
+                     'evaporate t
+                     'help-echo "mouse-2, RET: remove preview"))
+      (push ov org-latex--overlay-list)
+      (org-latex--after-preview-creation (overlay-start ov) (overlay-end ov)))))
+#+END_SRC

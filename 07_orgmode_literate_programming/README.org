@@ -9,15 +9,16 @@ Literate programming is the practice of bringing documentation (often in Markup 
 
 In literate programming, tangling is the act of generating compilable code from a literate program.
 
-** TODO Installation
+** Installation
 *** Spacemacs
 
+Under Spacemacs, as long as you enable the =org= layer on =dotspacemacs-configuration-layers=, then Org-Babel will be enabled.
 
 ** TODO Usage
 You may use =org-babel-tangle= (=C-c C-v t= or =, b t= in Spacemacs) in order to export your code blocks into a file. There are two ways to do so:
 
 *** Export Selected Blocks into Same File
-Assume you are working on a file names =filename.org=. In order to export all of the same type blocks into a single file =filename.ext=, you may add the arguments =:tangle yes= to each of the code blocks you wish to output. For example:
+Assume you are working on a file names =filename.org=. In order to export all of the same type blocks into a single file =filename.ext=, you may add the arguments =:tangle yes= to each of the code blocks you wish to output. For example,
 
 #+begin_src org
 ,#+begin_src elisp :tangle yes

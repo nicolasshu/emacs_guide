@@ -1,0 +1,83 @@
+#+TITLE: Literate Dockerfile Exampel
+#+AUTHOR: Fool
+
+
+This document explains the steps necessary for creating a Dockerfile for some specific application.
+
+* What is a Dockerfile?
+
+A *Dockerfile* is a text file that may be seen as a "recipe" for creating an image. It has a number of instructions in a human-interpretable way, where every line is a different step of the instruction.
+
+There are 3 main components for building a Dockerfile:
+
+1. *Base Image:* the start point of your Docker image
+2. *Application Code & Dependencies:* some code and dependencies are added to your image
+3. *Commands and Configurations:* commands are executed. These may be creation of environment variables, exposition of ports, or other basic commands.
+
+
+In general, the syntax for Dockerfiles is:
+
+#+begin_src :tangle no
+INSTRUCTION arguments
+#+end_src
+
+For example
+
+#+begin_src dockerfile :tangle no
+FROM ubuntu:20.04
+COPY . /app
+RUN apt-get update && apt-get install -y python3
+CMD ["python3", "/app/app.py"]
+#+end_src
+
+* Dockerfile for this Application
+
+** Build the Application
+
+First, the application needs to be built. This application will use =node:16= as the base image
+
+#+begin_src dockerfile :tangle Dockerfile
+FROM node:16 AS builder
+#+end_src
+
+The initial working directory is located at =/app=, which is where the =package.json= will be copied to, and it contains all of the dependencies needed for the application.
+
+
+#+begin_src dockerfile :tangle Dockerfile
+WORKDIR /app
+COPY package.json .
+#+end_src
+
+After the dependencies and requirements are setup, the application can be installed and built
+
+#+begin_src dockerfile :tangle Dockerfile
+RUN npm install
+COPY . .
+RUN npm run build
+#+end_src
+
+** Run the Application
+
+Next, the application must be run. This will be run using the =nginx:alpine= base image
+
+#+begin_src dockerfile :tangle Dockerfile
+FROM nginx:alpine
+#+end_src
+
+The built application will be copied over to a Nginx location
+
+#+begin_src dockerfile :tangle Dockerfile
+COPY --from=builder /app/build /usr/share/nginx/html
+#+end_src
+
+Finally, the application was designed to operate under HTTP protocols. Therefore, this Docker image will expose port 80
+
+#+begin_src dockerfile :tangle Dockerfile
+EXPOSE 80
+#+end_src
+
+Finally, the Nginx is setup to run in the foreground instead of running as a background daemon
+
+#+begin_src dockerfile :tangle Dockerfile
+CMD ["nginx", "-g", "daemon off;"]
+#+end_src

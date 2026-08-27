@@ -108,7 +108,7 @@ Your first boot up of Spacemacs will yield a few questions. Enter the following 
 1. What is your preferred editing style? (*v*im, *e*macs, *h*ybrid)
   - =v= / Vim
 
-2. What distribution of spacemacs would you like to start with? (*s*pacemacs, spacemacs-*b*ase)  
+2. What distribution of spacemacs would you like to start with? (*s*pacemacs, spacemacs-*b*ase)
   - =s= / spacemacs
 
 Depending on your system, it may try to install 126 packages and may struggle. If the system may be dealing with proxies, see below:
@@ -187,3 +187,10 @@ sudo apt install texlive-latex-extra
 sudo apt install texlive-full
 #+end_src
 
+At this point, you should have access to some of the following binaries (and more):
+
+- =pdflatex=
+- =xelatex=
+- =lualatex=
+- =latex=
+- =pdftex=
