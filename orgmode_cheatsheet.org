@@ -108,3 +108,19 @@ Use the citation style
 See [[https://blog.tecosaur.com/tmio/2021-07-31-citations.html][link]] for more.
 
 Problem with ivy. You can use =org-cite-insert= and then =M-RET=
+* Text Editing
+
+** Remove blank linees
+#+begin_src
+M-x flush-lines RET ^$ RET
+#+end_src
+
+** Remove lines with whitespace
+#+begin_src
+M-x flush-lines RET ^\s.*$ RET
+#+end_src
+
+** Remove whitespace
+#+begin_src
+delete-trailing-whitespace
+#+end_src
