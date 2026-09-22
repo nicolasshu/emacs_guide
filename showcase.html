@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Generated on 2026-09-22 Tue 05:01 -->
+<meta charset="utf-8"/>
+<title>Emacs Guide</title>
+<meta name="author" content="Nick Shu"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/theme/white.css" id="theme"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/chalkboard/style.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/customcontrols/style.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js-plugins/menu/font-awesome/css/fontawesome.css">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h1 class="title">Emacs Guide</h1><h2 class="author">Nick Shu</h2><p class="date">Created: 2026-09-22 Tue 05:01</p>
+</section>
+<section>
+<section id="slide-org6ae00c7">
+<h2 id="org6ae00c7">Emacs</h2>
+</section>
+</section>
+<section>
+<section id="slide-org4041b44">
+<h2 id="org4041b44">Intro</h2>
+</section>
+</section>
+<section>
+<section id="slide-orga6df71b">
+<h2 id="orga6df71b">Basics</h2>
+<div class="outline-text-2" id="text-orga6df71b">
+</div>
+</section>
+<section id="slide-orgdd03029">
+<h3 id="orgdd03029">Vocabulary</h3>
+<ul>
+<li><code>C</code>: Control
+<ul>
+<li>E.g. <code>C-x C-e</code> means <code>Ctrl+X (then) Ctrl+E</code></li>
+
+</ul></li>
+<li><code>M</code>: Meta key, usually <code>Alt</code>
+<ul>
+<li>E.g. <code>M-:</code> means <code>Alt+Shift+;</code></li>
+
+</ul></li>
+<li>Evaluate an expression: <code>M-:</code></li>
+<li>Running a command: <code>M-x</code></li>
+
+</ul>
+</section>
+<section id="slide-org037e1ad">
+<h3 id="org037e1ad">Windows and Buffers</h3>
+<p>
+A window is a visual interface that displays different types of buffers. These can be split between different files.
+</p>
+
+
+<div id="org9b4f832" class="figure">
+<p><img src="./01_basic/assets/windows_and_buffers.gif" alt="windows_and_buffers.gif" />
+</p>
+</div>
+</section>
+<section id="slide-org7f2b2ae">
+<h3 id="org7f2b2ae">Split window vertical</h3>
+<ul>
+<li><code>split-window-right</code></li>
+<li><code>SPC w v</code> (Spacemacs)</li>
+<li><code>SPC w v</code> (Doom)</li>
+
+</ul>
+
+
+<div id="org226d648" class="figure">
+<p><img src="./01_basic/assets/split-window-right.gif" alt="split-window-right.gif" />
+</p>
+</div>
+</section>
+<section id="slide-orgd9294bc">
+<h3 id="orgd9294bc">Split window horizontal</h3>
+<ul>
+<li><code>split-window-below</code></li>
+<li><code>SPC w s</code> (Spacemacs)</li>
+<li><code>SPC w s</code> (Doom)</li>
+
+</ul>
+
+
+<div id="org58ab923" class="figure">
+<p><img src="./01_basic/assets/split-window-below.gif" alt="split-window-below.gif" />
+</p>
+</div>
+</section>
+<section id="slide-org1d0b9f1">
+<h3 id="org1d0b9f1">Split window in 4 grid</h3>
+<ul>
+<li><code>window-split-grid</code></li>
+<li><code>SPC w 4</code> (Spacemacs)</li>
+
+</ul>
+
+
+<div id="org15920a6" class="figure">
+<p><img src="./01_basic/assets/window-split-grid.gif" alt="window-split-grid.gif" />
+</p>
+</div>
+</section>
+<section id="slide-org73752cb">
+<h3 id="org73752cb">Resize your window</h3>
+<ul>
+<li><code>shrink-window-horizontally</code></li>
+<li><code>SPC w [</code> (Spacemacs)</li>
+<li><code>C-x {</code> (Vanilla / Doom)</li>
+<li><code>enlarge-window-horizontally</code></li>
+<li><code>SPC w ]</code> (Spacemacs)</li>
+<li><code>C-x }</code> (Vanilla / Doom)</li>
+
+</ul>
+
+
+<div id="orgb1a3bca" class="figure">
+<p><img src="./01_basic/assets/resize-window.gif" alt="resize-window.gif" />
+</p>
+</div>
+</section>
+<section id="slide-org9496355">
+<h3 id="org9496355">Swapping Windows</h3>
+<ul>
+<li><code>winum-select-window-{number}</code> (e.g. <code>winum-select-window-4</code>)</li>
+<li><code>SPC {number}</code> / <code>M-{number}</code> (e.g. <code>SPC 4</code> or <code>M-4</code>) (Spacemacs)</li>
+<li><code>M-m {number}</code> (e.g. <code>M-m 4</code>) (Vanilla)</li>
+
+</ul>
+
+
+<div id="org3592247" class="figure">
+<p><img src="./01_basic/assets/winum-select-window.gif" alt="winum-select-window.gif" />
+</p>
+</div>
+</section>
+<section id="slide-orgfd940d8">
+<h3 id="orgfd940d8">Create a new file</h3>
+<ul>
+<li><code>find-file</code></li>
+<li><code>SPC f f</code>  (Spacemacs)</li>
+<li><code>C-x C-f</code> (Vanilla)</li>
+
+</ul>
+
+
+<div id="orgc935c15" class="figure">
+<p><img src="./01_basic/assets/find-file.gif" alt="find-file.gif" />
+</p>
+</div>
+</section>
+<section id="slide-orga94dcdf">
+<h3 id="orga94dcdf">Save Files</h3>
+<ul>
+<li><code>save-buffer</code></li>
+<li><code>SPC f s</code></li>
+<li><code>C-x C-s</code> (Vanilla)</li>
+<li><code>:w</code> (using Evil)</li>
+
+</ul>
+
+
+<div id="org9bf9c10" class="figure">
+<p><img src="./01_basic/assets/save-buffer.gif" alt="save-buffer.gif" />
+</p>
+</div>
+</section>
+<section id="slide-org740c1f2">
+<h3 id="org740c1f2">Package Management</h3>
+<p>
+You may install packages on Emacs, which may vary on the flavor of Emacs.
+</p>
+
+<ul>
+<li>Vanilla Emacs utilizes the <code>~/.emacs.d/init.el</code></li>
+<li>Spacemacs is configured in <code>~/.spacemacs</code></li>
+<li>Doom Emacs is configured in 3 locations</li>
+
+</ul>
+</section>
+<section id="slide-org85426a4">
+<h3 id="org85426a4">Python Black</h3>
+
+<div id="orgdded086" class="figure">
+<p><img src="./02_spacemacs/assets/python-black.gif" alt="python-black.gif" />
+</p>
+</div>
+</section>
+<section id="slide-org9fc860d">
+<h3 id="org9fc860d">CSV Modes</h3>
+
+<div id="orge26801d" class="figure">
+<p><img src="./02_spacemacs/assets/csv-mode.gif" alt="csv-mode.gif" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgff80e3a">
+<h2 id="orgff80e3a">Text Editor</h2>
+<div class="outline-text-2" id="text-orgff80e3a">
+</div>
+</section>
+<section id="slide-orga05744b">
+<h3 id="orga05744b">Treemacs</h3>
+
+<div id="org4643242" class="figure">
+<p><img src="./03_text_editor/assets/treemacs.gif" alt="treemacs.gif" />
+</p>
+</div>
+</section>
+<section id="slide-org2d54a0d">
+<h3 id="org2d54a0d">Undo Tree</h3>
+
+<div id="orgfc4f44a" class="figure">
+<p><img src="./03_text_editor/assets/undo-tree.gif" alt="undo-tree.gif" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org2a8e527">
+<h2 id="org2a8e527">Dired</h2>
+<p>
+Dired is a very powerful file manager
+</p>
+
+
+<div id="orgf59f4a8" class="figure">
+<p><img src="./assets/dired-create-directory.gif" alt="dired-create-directory.gif" />
+</p>
+</div>
+</section>
+<section id="slide-org0728579">
+<h3 id="org0728579">Dired edits a buffer</h3>
+
+<div id="org6940175" class="figure">
+<p><img src="./assets/rename.gif" alt="rename.gif" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgcdde3c0">
+<h2 id="orgcdde3c0">Org-Mode</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-org4dacccb">
+<h2 id="org4dacccb">Org-Mode + LaTeX</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-org91bbab8">
+<h2 id="org91bbab8">Literate Programming</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-orgc1d94eb">
+<h2 id="orgc1d94eb">Org-Roam</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-orgfc492a6">
+<h2 id="orgfc492a6">Org-Journal</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-org8c74e32">
+<h2 id="org8c74e32">Magit</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-orgebb483b">
+<h2 id="orgebb483b">Citar</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-orgee79455">
+<h2 id="orgee79455">Jupyter / Julia</h2>
+
+</section>
+</section>
+<section>
+<section id="slide-org68f87cd">
+<h2 id="org68f87cd">Custom Scripts</h2>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/markdown/markdown.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/search/search.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.0/plugin/zoom/zoom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/chalkboard/plugin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/customcontrols/plugin.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+overview: true,
+width: 1400,
+height: 1000,
+
+transition: 'convex',
+transitionSpeed: 'default',
+
+// Plugins with reveal.js 4.x and later
+plugins: [ RevealMarkdown, RevealNotes, RevealSearch, RevealZoom, RevealChalkboard, RevealCustomControls ],
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+]
+
+,customcontrols: { controls: [{ icon: '<i class="fa fa-pen-square"></i>', title: 'Toggle chalkboard (B)', action: 'RevealChalkboard.toggleChalkboard();'}, { icon: '<i class="fa fa-pen"></i>', title: 'Toggle notes canvas (C)', action: 'RevealChalkboard.toggleNotesCanvas();'}]}});
+</script>
+</body>
+</html>

@@ -8,8 +8,7 @@ You may use your regular navigation keybindings to navigate around. You can use 
 
 In order to create a new directory, run the function =dired-create-directory=
   - =M-x dired-create-directory=
-  - =+= (Spacemacs)
-  - DOOM
+  - =+= (Spacemacs/Doom)
 
 [[./assets/dired-create-directory.gif]]
 
