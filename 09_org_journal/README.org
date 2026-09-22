@@ -19,6 +19,7 @@ In Spacemacs, go to =dotspacemacs/layers= > =dotspacemacs-configuration-layers=,
       (org
        :variables
        org-enable-org-journal-support t
+       org-journal-file-format "%Y%m%d.org"
        )
       )
     ...
@@ -31,7 +32,7 @@ Next, setup the variable =org-journal-dir= to the location of the journal files.
 (setq org-journal-dir "~/path/to/journal/")
 #+END_SRC
 
-*** TODO Doom Emacs
+*** Doom Emacs
 
 In order to add Org-Journal, you can simply add the =+journal= to the =org= entry in your =init.el= file.
 

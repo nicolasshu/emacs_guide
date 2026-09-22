@@ -40,6 +40,8 @@ Now, Citar is amazing, but it doesn't support [[https://emacs-helm.github.io/hel
 
 *** Citar
 
+[[./assets/citar.gif]]
+
 Now, Citar is ready to be setup. Below will be the steps for completion:
 
 1. Install =citar= package

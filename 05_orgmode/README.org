@@ -51,6 +51,8 @@ Additionally, and /optionally/, also add =org-tempo= to your =user-config=.
 
 Org-tempo will prove you with a few structure templates when writing snippets. For example, by typing =<s TAB=, will create a code block. Give it a try! For more information, you may read [[https://orgmode.org/manual/Structure-Templates.html][Structure Templates]].
 
+[[./assets/org-tempo.gif]]
+
 *** Doom Emacs
 
 Under your =$DOOM/init.el=, make sure to add =org= to the =(doom! ...)= configuration
@@ -68,6 +70,10 @@ Then, run =doom sync= to apply the changes to your Doom configuration
 
 ** Basics
 *** A Different Markdown
+
+[[./assets/folding.gif]]
+
+
 - Markdown is primarily a formatting language.
 - Org Mode is a formatting language, outlining tool, task manager, literate programming environment, and personal knowledge system.
 
@@ -119,6 +125,8 @@ You can also have code blocks
 
 *** Footnotes
 
+[[./assets/footnotes.gif]]
+
 Try adding the following to your org file
 
 #+begin_src org
@@ -128,6 +136,8 @@ Org Mode also supports footnotes.[fn:1]
 #+end_src
 
 *** Unordered Lists
+
+[[./assets/sort-list.gif]]
 
 Below is a list of types of files that Org files can be exported to. We will use this as an exercise to showcase what can be done with lists. Copy the block below into your Org file.
 
@@ -147,6 +157,8 @@ Next, sort the list via:
 
 *** Tables
 
+[[./assets/table_1.gif]]
+
 The built-in functionality allow for easy auto-completion.
 
 Add the following to your Org file.
@@ -159,6 +171,7 @@ After so, open up a new line
   - =evil-org-open-below=
   - =o= (Spacemacs)
   - =TAB=
+  - TODO DOOM
 
 Next, add a city name like Coruscant, and press =TAB= to jump to the next cell.
 
@@ -194,6 +207,8 @@ Next, put in a few values
 | Malachor  |             1 |     3000 |
 #+end_src
 
+[[./assets/table_2.gif]]
+
 Next, let's add a new column =Volume=. You can simply add the title "Volume" to the end and press =TAB=
 
 #+begin_src org
@@ -223,6 +238,7 @@ Now, let's do some operations! We'll add the following to the bottom of the tabl
 Now, you can execute the TBLFM command via:
   - =org-ctrl-c-ctrl-c=
   - =, ,= (Spacemacs)
+  - TODO DOOM
 
 
 #+begin_src org
@@ -233,6 +249,8 @@ Now, you can execute the TBLFM command via:
 | Malachor  |             1 |     3000 | 4.500e+09 |
 #+TBLFM: $4=(4.0/3.0)*pi*(($3/2)^3);%.3e
 #+end_src
+
+[[./assets/table_3.gif]]
 
 Now, let's add two new rows to the end, being the average:
 
@@ -260,6 +278,7 @@ Next, we'll start populating the new function. Keep in mind that:
 Now, you can execute the TBLFM command via:
   - =org-ctrl-c-ctrl-c=
   - =, ,= (Spacemacs)
+  - TODO DOOM
 
  #+begin_src org
 | Planet    |    Population | Diameter |        Volume |
@@ -275,6 +294,8 @@ Now, you can execute the TBLFM command via:
 This shows that you can do quite a lot of "Excel-like" operations on your Org-mode file
 
 ** Tasking
+
+[[./assets/tasking.gif]]
 
 #+begin_src org
 ,** Tasks for Tuesday
@@ -296,12 +317,12 @@ Copy the following to your Org-Mode file
   - [ ] Towels
 #+end_src
 
-  - [ ] Towels
 Next, check the checkboxes
   - =org-ctrl-c-ctrl-c=
   - =, ,= / =, T c= (Spacemacs)
   - =C-c C-c= (Vanilla)
   - =, T c=
+  - TODO DOOM
 
 Copy the following to your Org-Mode file
 
@@ -317,15 +338,20 @@ Copy the following to your Org-Mode file
   - =org-schedule=
   - =, d s= (Spacemacs)
     - Proceed to use =M-{hjkl}= to decide date
+  - TODO DOOM
 + Deadlines
   - =org-deadline=
   - =, d d= (Spacemacs)
     - Proceed to use =M-{hjkl}= to decide date
+  - TODO DOOM
 + Change Status
   - =org-todo=
   - =, T T= (Spacemacs)
+  - TODO DOOM
 
 ** Inline Images
+
+[[./assets/inline_images.gif]]
 
 Add the following to your org file
 

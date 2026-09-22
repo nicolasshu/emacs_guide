@@ -48,3 +48,5 @@ Now, you may invoke the new custom function. In order to get it function, select
 
   - =python-google-docstring=
   - =SPC o o=
+
+[[./assets/custom_scripts.gif]]

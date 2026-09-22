@@ -57,6 +57,11 @@ At this point, Spacemacs will be Installed.
 
 If using an Arch-based distribution, you can just install the =emacs= package. Or you may look through [[https://wiki.archlinux.org/title/Emacs][Arch Wiki's Emacs page]].
 
+You may wish to install Source Code Pro font, which is the default font for Spacemacs
+
+#+begin_src shell
+pacman -S ttf-adobe-source-code-pro-fonts
+#+end_src
 
 *** Ubuntu
 
@@ -100,6 +105,11 @@ make -j4 bootstrap
 sudo make install
 #+END_SRC
 
+You may wish to install Source Code Pro font, which is the default font for Spacemacs
+
+#+begin_src shell
+sudo apt-get install fonts-source-code-pro
+#+end_src
 
 ** First Startup in Spacemacs
 
@@ -111,7 +121,11 @@ Your first boot up of Spacemacs will yield a few questions. Enter the following 
 2. What distribution of spacemacs would you like to start with? (*s*pacemacs, spacemacs-*b*ase)
   - =s= / spacemacs
 
-Depending on your system, it may try to install 126 packages and may struggle. If the system may be dealing with proxies, see below:
+Depending on your system, it may try to install 126 packages and may struggle. After its initial setup, you should see the first instantiation of Spacemacs.
+
+[[./assets/spacemacs_first_start.png]]
+
+If the system may be dealing with proxies, see below
 
 ** Handling Proxies
 

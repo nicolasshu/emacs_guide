@@ -1,0 +1,122 @@
+#+title: Doom Emacs
+
+* About
+
+Doom Emacs is another flavor of Emacs which brings a user to have a really good starting point in Emacs, while not having to deal with all of the intricacies of Vanilla Emacs. It does have a different configuration philosophy as Spacemacs, but remains highly configurable.
+
+* Dotfiles
+
+There are essentially 3 configuration files for Doom Emacs:
+
+- =init.el=: Enables you to toggle modules on and off
+- =config.el=: Configures your personal behavioural tweaks
+- =packages.el=: Installs extra packages using =straight.el=
+
+ Whenever you start Doom Emacs, it follows the following steps:
+
+  1. Doom loads the selected modules from =init.el=
+  2. Each module (a) declares the packages associated with the module and (b) sets up the defaults
+  3. The =packages.el= runs =straight.el= (a package manager), which ensures that your packages are installed
+  4. The =config.el= runs in the end to make sure your desired configurations are set (e.g., overriding any function/variable/setting)
+
+Generally speaking, in order to perform configuration changes, you may
+
+1. Edit your =init.el= / =config.el= / =packages.el= via =SPC f p= (Default keybinding)
+2. Run =$ doom sync= on your shell
+3. Restart Emacs
+
+* Package Management
+
+Likely, the most important factor to learn about Doom Emacs is how to configure it, and most importantly, how to setup its packages. This section will cover the basics of =straight.el= and =use-package=, allowing the user to understand their purposes. Then it will cover how Doom Emacs does its package management via its own built-in tools, ultimately, leveraging =straight.el= and =use-package=.
+
+** Straight.el
+
+Straight often refers to [[https://github.com/radian-software/straight.el][straight.el]], which is a package manager for Emacs. It is different from the built-in package.el package manager.
+
+Think of =straight.el= as like Obtainium on Android devices or like a lot of =*-git= packages in Pacman (i.e., Arch Linux). Instead of downloading packaged releases, you clone the actual Git repositories and manage them directly. In such case, the steps of =straight.el= are:
+
+1. Clone a GitHub repo
+2. Pin it to a specific commit
+3. Build it locally
+
+This makes it really nice for consistency, reproducibility, and hackability.
+
+- For consistency, it's nice because you're not mixing ELPA or MELPA, and everything is treated the same way
+- For reproducibility, since every package is pinned to a specific commit, your setup becomes very stable
+- For hackability, given that the packages are actual Git repos, you can edit the packages yourself, you can fork them, and you can debug them easily
+
+** Use-package
+
+At this point, we've established that =straight.el= installs packages. Next is to configure how and when the packages will load. This is often done via =use-package=.
+
+Emacs can be configured as such:
+
+#+begin_src elisp
+(require 'foo)
+(setq foo-option t)
+(add-hook 'prog-mode-hook #'foo-mode)
+#+end_src
+
+Instead, we can configure it using =use-package= as such:
+
+#+begin_src elisp
+(use-package foo
+  :init
+  (setq foo-option t)
+  :hook (prog-mode . foo-mode)
+  )
+#+end_src
+
+For Doom Emacs, we'll be using something very similar to this.
+
+** Package Management on Doom Emacs
+
+For package management, we'll effectively have two steps:
+
+1. Edit =packages.el= to install packages via =(package! package-name)=
+2. Edit =config.el= to configure packages via =(use-package! package-name)=
+
+*** Installation of Package
+
+Doom Emacs heavily relies upon =straight.el=, however, you end up not interacting with =straight.el= yourself. You end up editing your config file =packages.el= (Note that this is different from =package.el=, which would be the built-in package manager)
+
+
+#+begin_src elisp
+(package! some-package)
+#+end_src
+
+Doom Emacs then tells =straight.el= to fetch the package, pins it to the =straight/versions/default.el= and builds it.
+
+
+| *Feature*         | *package.el*                           | *straight.el*        |
+|-----------------+--------------------------------------+--------------------|
+| Source          | package archives (e.g., MELPA, ELPA) | Git repos          |
+| Versioning      | latest available                     | pinned commits     |
+| Reproducibility | weak                                 | strong             |
+| Local editing   | weird                                | straight on source |
+
+*** Configuration of Package
+
+Doom Emacs does not use =use-package= in the normal way. Instead, it uses =use-package!= as a wrapper around =use-package= in a way that integrates with the Doom's module system, WITH THE ASSUMPTION that the packages were installed via =straight.el=.
+
+#+begin_src elisp
+(use-package! some-package)
+#+end_src
+
+*** Example
+
+Under =packages.el=, you may install =magit= via:
+
+#+begin_src elisp
+(package! magit)
+#+end_src
+
+Under =config.el=, you may configure it as such:
+
+#+begin_src elisp
+(use-package! magit
+  :commands (magit-status)
+  :config
+  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
+  )
+#+end_src

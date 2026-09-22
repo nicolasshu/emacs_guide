@@ -42,6 +42,8 @@ Then, set the variable =jupyter-repl-echo-eval-p= to true
 
 *** Usage
 
+[[./assets/jupyter.gif]]
+
 **** Basic Usage
 
 Start up a REPL
@@ -112,14 +114,18 @@ Under Spacemacs, add =julia= to =dotspacemacs-configuration-layers=
 
 *** Usage
 
+[[./assets/julia.gif]]
+
 Start a Julia REPL:
 
   - =julia-repl=
   - =, r= (Spacemacs)
+  - TODO DOOM
 
 Send commands to Julia REPL
 
   - =julia-repl-send-region-or-line=
   - =, e r= (Spacemacs)
+  - TODO DOOM
 
 Open the very simple file =plots.jl= and play around with it.

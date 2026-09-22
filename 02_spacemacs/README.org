@@ -22,7 +22,6 @@ This will install an entire set of configurations and pre-installed packages und
 
 At your first start, you will be prompted to setup a few of the basic configuration. After you've setup the basic configurations, you will see a new file under your home directory: =$HOME/.spacemacs=
 
-
 ** Spacemacs Dotfile
 
 In order to access your Spacemacs dotfile, you may run:
@@ -32,7 +31,7 @@ In order to access your Spacemacs dotfile, you may run:
 
 This dotfile is very well documented, but it is also a few hundreds of lines. We will go over some of the more important parts to consider.
 
-** Installing Packages
+** Package Management
 
 Spacemacs is extensible via layers or via packages. Installing packages is the most common way of extending Emacs, which is often agnostic of the flavor of Emacs that you're using. Layers is specific to Spacemacs.
 
@@ -104,6 +103,7 @@ Or you may set =python-black= to use the full path
 (setq python-black-command "/home/username/anaconda3/bin/black")
 #+END_SRC
 
+[[./assets/python-black.gif]]
 
 ** Configurations
 
@@ -137,3 +137,5 @@ Let's add the following configurations to the =user-config=.
 #+end_src
 
 At this point, you'll see the =csv_demo.csv= file better formatted, and a few simple aspects of your text editor experience may be better personality.
+
+[[./assets/csv-mode.gif]]

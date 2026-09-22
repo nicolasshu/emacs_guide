@@ -42,6 +42,8 @@ In order to setup org-roam, you'll need to setup a few variables, and then reloa
 
 ** Usage
 
+[[./assets/org-roam.gif]]
+
 In Org-Roam, the main things you'll need are to:
 
   - open/create a file
@@ -114,7 +116,7 @@ In Spacemacs, make sure that the variable =org-enable-roam-support= is set to =t
 
 In order to use Org-Roam-UI, you can simply activate its mode via =M-x org-roam-ui-open= and it will be launched under http://127.0.0.1:35901.
 
-[[./assets/org-roam-ui.png]]
+[[./assets/org-roam-ui.gif]]
 
 ** More Customization
 

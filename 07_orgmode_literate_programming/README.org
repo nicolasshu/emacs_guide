@@ -14,10 +14,13 @@ In literate programming, tangling is the act of generating compilable code from 
 
 Under Spacemacs, as long as you enable the =org= layer on =dotspacemacs-configuration-layers=, then Org-Babel will be enabled.
 
-** TODO Usage
-You may use =org-babel-tangle= (=C-c C-v t= or =, b t= in Spacemacs) in order to export your code blocks into a file. There are two ways to do so:
+** Usage
+You may use =org-babel-tangle= (=C-c C-v t= in Vanilla/Doom or =, b t= in Spacemacs) in order to export your code blocks into a file. There are two ways to do so:
 
 *** Export Selected Blocks into Same File
+
+[[./assets/tangle_1.gif]]
+
 Assume you are working on a file names =filename.org=. In order to export all of the same type blocks into a single file =filename.ext=, you may add the arguments =:tangle yes= to each of the code blocks you wish to output. For example,
 
 #+begin_src org
@@ -45,6 +48,8 @@ I haven't found a better way to do so.
 #+end_quote
 
 *** Export Every Block into a File
+
+[[./assets/tangle_3.gif]]
 
 You are able to export every block with some signature into a file, and that way, you don't have to declare =:tangle yes= at every selected code block. This can be achieved by adding the property of tangling given some =header-args=. As an example, we'll have the following org mode file:
 
@@ -80,6 +85,9 @@ set $right semicolon
 #+end_src
 
 *** Export Individual Blocks into Separate Files
+
+[[./assets/tangle_4.gif]]
+
 In order to set individual code blocks to be tangled into specific files, add the argument =:tangle filename.ext= to the code block definition. For example:
 
 #+begin_src org

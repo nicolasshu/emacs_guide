@@ -10,6 +10,7 @@ treemacs
 
 Open a file in your system via =find-file= / =SPC f f=. Next, run the command =treemacs= / =SPC f t=
 
+[[./assets/treemacs.gif]]
 
 ** Evil Mode
 
@@ -25,8 +26,6 @@ This will give you new types of keybindings to your vim keybindings
 
 ** Undo Tree
 
-[[./assets/undo-tree.png]]
-
 As a *temporary* install, let's run the following command:
 
   - =M-x package-install undo-tree RET=
@@ -37,3 +36,5 @@ Now, edit a file, and do a few undos (Under Vim keybindings, you can use =u= and
   - =undo-tree-visualize= / =C-x u=
 
 Now you can navigate through an undo tree to see previous changes.
+
+[[./assets/undo-tree.gif]]
