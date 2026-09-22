@@ -15,6 +15,8 @@ Let's establish some vocabulary first
 
 A window is a visual interface that displays different types of buffers. These can be split between different files.
 
+[[./assets/windows_and_buffers.gif]]
+
 *** Buffers
 
 Buffers are reproductions of an actual file or a temporary file or simply a message. They are often displayed in windows. They do not need to be visible in order to be opened. You may switch buffers
@@ -30,30 +32,37 @@ If you wish to abort, you may either run =C-g= or =ESC=
 Split window vertical
   - =split-window-right=
   - =SPC w v= (Spacemacs)
+  - =SPC w v= (Doom)
+
+[[./assets/split-window-right.gif]]
 
 Split window horizontal
   - =split-window-below=
   - =SPC w s= (Spacemacs)
+  - =SPC w s= (Doom)
+
+[[./assets/split-window-below.gif]]
 
 Close window
   - =delete-window=
   - =SPC w d= (Spacemacs)
-
-Close window
-  - =delete-window=
-  - =SPC w d= (Spacemacs)
+  - =SPC w d= (Doom)
 
 Split window in 4 grid
   - =window-split-grid=
   - =SPC w 4= (Spacemacs)
 
+[[./assets/window-split-grid.gif]]
+
 Resize your window
   - =shrink-window-horizontally=
   - =SPC w [= (Spacemacs)
-  - =C-x {= (Vanilla)
+  - =C-x {= (Vanilla / Doom)
   - =enlarge-window-horizontally=
   - =SPC w ]= (Spacemacs)
-  - =C-x }= (Vanilla)
+  - =C-x }= (Vanilla / Doom)
+
+[[./assets/resize-window.gif]]
 
 Under Spacemacs, it installs the package =winum= by default, which then allows one to jump between different windows by numbered IDs. It can be run using:
 
@@ -61,6 +70,7 @@ Under Spacemacs, it installs the package =winum= by default, which then allows o
   - =SPC {number}= / =M-{number}= (e.g. =SPC 4= or =M-4=) (Spacemacs)
   - =M-m {number}= (e.g. =M-m 4=) (Vanilla)
 
+[[./assets/winum-select-window.gif]]
 
 ** Create a new file
 
@@ -72,6 +82,8 @@ We can create new files by finding a file. When we "find a file" that does not e
 
 This will open a new buffer. The file will not be created until you save.
 
+[[./assets/find-file.gif]]
+
 * Save Files
 
 In order to save your file, you can run the following command:
@@ -80,6 +92,8 @@ In order to save your file, you can run the following command:
 - =SPC f s=
 - =C-x C-s= (Vanilla)
 - =:w= (using Evil)
+
+[[./assets/save-buffer.gif]]
 
 ** Evil Mode
 
