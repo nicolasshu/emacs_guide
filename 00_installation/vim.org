@@ -1,0 +1,74 @@
+#+TITLE: Vim
+
+
+* Phase 1: Initial Tutorial
+** Vim Tutor
+
+Run =vimtutor= or =:Tutor= on Neovim. This
+
+
+** Saving and Quitting
+
+- =:w=: Save the current file
+- =:w filename=: Save as a new file named "filename"
+- =:q=: Quit the file (it fails if there are unsaved changes)
+- =:q!=: Force quit and discard all changes
+- =:wq= or =:x=: Save and quit the file
+- =:wa=: Save all currently open files
+
+** Create a Cheatsheet
+
+Run through =vimtutor= one more time in a separate window, and create a cheatsheet document in Markdown.
+
+Try copying the following:
+
+https://vim.rtorr.com/
+
+* Phase 2: Reinforcement
+
+First, install the following plugins on your system:
+
+  - Chrome: [[https://chromewebstore.google.com/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?pli=1][Vimium]] or [[https://chromewebstore.google.com/detail/vimium-c-all-by-keyboard/hfjbmagddngcpeloejdejnfgbamkjaeg][Vimium C]]
+  - Firefox: [[https://addons.mozilla.org/en-US/firefox/addon/vimium-ff/][Vimium]] or [[https://addons.mozilla.org/en-US/firefox/addon/vimium-c/][Vimium C]]
+  - VS Code: [[https://marketplace.visualstudio.com/items?itemName=vscodevim.vim][Vim plugin]]
+  - (Optional) Oh-My-Zsh: [[https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/vi-mode/README.md][vi-mode]]
+
+Rules of today: Try your best to not use your mouse nor to use a WYSIWYG editor.
+
+Goals: This day is dedicated to reinforcement.
+
+  - [[openvim.com][OpenVim]]
+  - [[https://vim-adventures.com/][Vim Adventures]]
+
+
+* Phase 3: Editing Verbs
+
+Goals: Internalize the operator+motion grammar (=d=, =c=, =y= + motions
+
+[[https://theviminator.com/][Viminator]]: The goal is to delete as many of the highlighted words as possible
+
+Macros:
+[[http://www.vimgenius.com/][Vim Genius]]
+
+* Commands
+
+** Search and Replace
+
+- =:s/old/new/=: Replace the first occurrence of "old" with "new"
+- =:s/old/new/g=: Replace ALL occurences of "old" with "new" in the current line
+- =:%s/old/new/g=": Replace globally across the entire file
+- =:%s/old/new/gc=: Replace globally with a prompt asking for confirmation before each change
+
+** File and Buffer Management
+
+- =:e filename=: Open and edit a specific file
+- =:r filename=: Insert content of an external file directly below the cursor
+- =:ls=: List all open buffers
+- =:b <number>=: Switch to a buffer by its listed number
+- =:bd=: Delete the buffer
+
+** Windows
+
+* Practice
+
+Vim Golf

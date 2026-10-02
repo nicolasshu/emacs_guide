@@ -1,6 +1,5 @@
-#+TITLE: Literate Dockerfile Exampel
+#+TITLE: Literate Dockerfile Example
 #+AUTHOR: Fool
-
 
 This document explains the steps necessary for creating a Dockerfile for some specific application.
 
